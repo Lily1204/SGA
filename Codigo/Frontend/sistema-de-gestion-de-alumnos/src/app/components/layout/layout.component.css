@@ -1,4 +1,4 @@
-html, body, mat-sidenav-container {
+html, body, mat-sidenav-container .main-container {
     margin: 0;
     width: 100%;
     height: 100%;
@@ -6,6 +6,7 @@ html, body, mat-sidenav-container {
 
 mat-sidenav-content {
     display: flex;
+    height: auto;
     align-items: center;
     justify-content: center;
 }

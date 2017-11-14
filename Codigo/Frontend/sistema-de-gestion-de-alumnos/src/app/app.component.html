@@ -1,4 +1,15 @@
-<nav class="navbar navbar-expand-xl navbar-dark bg-info justify-content-center">
-    <a class="navbar-brand">Sistema De Gestión De Alumnos</a>
-</nav>
-<router-outlet></router-outlet>
+<!-- Uses a header that scrolls with the text, rather than staying
+  locked at the top -->
+<div class="mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header mdl-layout__header--scroll">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Sistema De Gestión De Alumnos</span>
+        </div>
+    </header>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+</div>

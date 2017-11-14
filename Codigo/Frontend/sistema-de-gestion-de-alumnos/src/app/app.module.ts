@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {RouterModule} from '@angular/router';
+
+import { ROUTES } from './app.routes';
 
 import { AppComponent } from './app.component';
 
-import {ROUTES} from './app.routes';
 import {LoginModule} from './components/login/login.module';
+import {LayoutModule} from './components/layout/layout.module';
+
+import {UserResolve} from './resolves/user.resolve';
+import {RouterModule} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -13,10 +19,15 @@ import {LoginModule} from './components/login/login.module';
   ],
   imports: [
       BrowserModule,
-      RouterModule.forRoot(ROUTES, {useHash: true}),
-      LoginModule
+      LoginModule,
+      LayoutModule,
+      RouterModule.forRoot(ROUTES, {useHash: true})
   ],
-  providers: [],
+  providers: [
+      UserResolve,
+      HttpModule,
+      HttpClientModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import {UserService} from '../../services/user.service';
@@ -11,17 +12,22 @@ export class LoginComponent {
 
     form: FormGroup;
 
-    constructor(fb: FormBuilder
-                , private userService: UserService) {
+    onError: boolean;
+
+    constructor(fb: FormBuilder,
+                private userService: UserService,
+                private router: Router) {
         this.form = fb.group({
-            'control_number': ['', Validators.required],
+            'user': ['', Validators.required],
             'password': ['', [
                 Validators.required,
                 Validators.minLength(8)]]
         });
     }
 
-    login() {
-        this.userService.logging(this.form.controls.control_number.value, this.form.controls.password.value);
+    login(rol: string): void {
+        const request = this.form.value;
+        request.rol = rol;
+        this.userService.logging(request).subscribe(next => this.router.navigate([rol]));
     }
 }

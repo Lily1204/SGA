@@ -45,12 +45,12 @@ export class ProfessorComponent implements OnInit {
         }
 
         this.form = fb.group({
-            id: ['', Validators.required],
+            noctrl: ['', Validators.required],
+            lastname: ['', Validators.required],
+            s_lastname: ['', Validators.required],
             name: ['', Validators.required],
-            lastName: ['', Validators.required],
-            s_lastName: ['', Validators.required],
             birthday: ['', Validators.required],
-            bloodType: ['', Validators.required],
+            bloodtype: ['', Validators.required],
             status: ['', Validators.required],
             semester: ['', Validators.required],
             idinge: ['', Validators.required]
@@ -65,27 +65,28 @@ export class ProfessorComponent implements OnInit {
             this.students = students;
             this.studentSelected = 0;
         }, error => {
-            this.students = [{
-                id: 0,
-                name: 'Julio',
-                lastName: 'Perez',
-                s_lastName: 'Gracia',
-                birthday: '1995-12-10',
-                bloodType: 'Desconocido',
-                status: 'Soltero',
-                semester: '5',
-                idinge: 0
-            }, {
-                id: 1,
-                name: 'Damian',
-                lastName: 'Zamora',
-                s_lastName: 'Celiseo',
-                birthday: 'Desconocido',
-                bloodType: 'Desconocido',
-                status: 'Soltero',
-                semester: '5',
-                idinge: 0
-            }];
+            this.students = error.error;
+            /*[{
+                            noctrl: 0,
+                            name: 'Julio',
+                            lastName: 'Perez',
+                            s_lastName: 'Gracia',
+                            birthday: '1995-12-10',
+                            bloodType: 'Desconocido',
+                            status: 'Soltero',
+                            semester: '5',
+                            idinge: 0
+                        }, {
+                            noctrl: 1,
+                            name: 'Damian',
+                            lastName: 'Zamora',
+                            s_lastName: 'Celiseo',
+                            birthday: 'Desconocido',
+                            bloodType: 'Desconocido',
+                            status: 'Soltero',
+                            semester: '5',
+                            idinge: 0
+                        }];*/
             this.studentSelected = 0;
         });
     }
@@ -115,8 +116,11 @@ export class ProfessorComponent implements OnInit {
 
     onSave(id: number) {
         if (this.isEditing) {
+            const data = this.form.getRawValue();
+            delete data.noctrl;
+            console.log('onEdit', data);
             this.professorService
-                .updateStudent(id, this.form.getRawValue())
+                .updateStudent(id, data)
                 .subscribe(
                     () => {
                         this.onSuccess(
@@ -126,6 +130,7 @@ export class ProfessorComponent implements OnInit {
                         this.resetView();
                     }, () => this.onError());
         } else if (this.isCreating) {
+            console.log('onCreate', this.form.getRawValue());
             this.professorService
                 .createStudent(this.form.getRawValue())
                 .subscribe(
@@ -141,12 +146,12 @@ export class ProfessorComponent implements OnInit {
         }
     }
 
-    resetView() {
+    resetView(id?: number) {
         this.isEditing = false;
         this.isCreating = false;
         this.studentToEdit = null;
         if (this.students) {
-            this.studentSelected = 0;
+            this.studentSelected = id ? id : 0;
         }
     }
 

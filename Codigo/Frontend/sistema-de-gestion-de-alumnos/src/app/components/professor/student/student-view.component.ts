@@ -22,7 +22,7 @@ export class StudentViewComponent {
     }
 
     onDelete() {
-        this.delete.emit(this.student.id);
+        this.delete.emit(this.student.noctrl);
     }
 
     onEdit() {

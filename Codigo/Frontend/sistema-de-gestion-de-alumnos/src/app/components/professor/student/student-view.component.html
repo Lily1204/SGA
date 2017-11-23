@@ -1,15 +1,15 @@
 <div class="card" *ngIf="selected">
     <div class="card-header">
-        {{student.name}} {{student.lastName}} {{student.s_lastName}}
+        {{student.name}} {{student.lastname}} {{student.s_lastname}}
         <i class="fa fa-pencil" aria-hidden="true" (click)="onEdit()"></i>
         <i class="fa fa-trash-o" aria-hidden="true" (click)="onDelete()"></i>
     </div>
     <div class="card-body">
         <ul>
-            <li>Id: {{student.id}}</li>
+            <li>Id: {{student.noctrl}}</li>
             <li>Semestre: {{student.semester}}</li>
             <li>Fecha de nacimiento: {{student.birthday}}</li>
-            <li>Tipo de Sangre: {{student.bloodType}}</li>
+            <li>Tipo de Sangre: {{student.bloodtype}}</li>
             <li>Estado Civil: {{student.status}}</li>
             <li>Id Ingenieria: {{student.idinge}}</li>
         </ul>

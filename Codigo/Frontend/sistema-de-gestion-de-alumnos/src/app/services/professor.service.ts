@@ -21,15 +21,15 @@ export class ProfessorService {
     }
 
     createStudent(student: any) {
-        return this.http.post(this.uri + 'peoples', student);
+        return this.http.post(this.uri + 'people', student);
     }
 
     updateStudent(id: number, student: any) {
-        return this.http.put(this.uri + 'peoples/' + id, student);
+        return this.http.put(this.uri + 'people/' + id, student);
     }
 
     deleteStudent(id: number) {
-        return this.http.delete(this.uri + 'peoples/' + id);
+        return this.http.delete(this.uri + 'people/' + id);
     }
 
     getAllGroups() {

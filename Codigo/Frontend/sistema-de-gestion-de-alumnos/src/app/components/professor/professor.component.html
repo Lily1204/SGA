@@ -16,12 +16,12 @@
 <div class="row container mx-auto mt-2" *ngIf="students; else loading">
     <div class="col-4">
         <div class="list-group" id="list-tab" role="tablist">
-            <a class="list-group-item list-group-item-action" [ngClass]="{'active':studentSelected == student.id}"
+            <a class="list-group-item list-group-item-action" [ngClass]="{'active':studentSelected == index}"
                [id]="index"
-               data-toggle="list" role="tab" (click)="selectStudent(student.id);"
+               data-toggle="list" role="tab" (click)="selectStudent(index);"
                *ngFor="let student of students; let index = index"
             >
-                {{student.name}} {{student.lastName}}
+                {{student.name}} {{student.lastname}}
             </a>
             <a class="list-group-item list-group-item-action" [ngClass]="{'active':studentSelected == -1}"
                (click)="onCreate()">
@@ -31,9 +31,9 @@
     </div>
     <div class="col-8" *ngIf="!isEditing && !isCreating; else editStudent">
         <div class="tab-content" id="nav-tabContent">
-            <app-student-view class="tab-pane fade" [ngClass]="{'show active':studentSelected == student.id}"
+            <app-student-view class="tab-pane fade" [ngClass]="{'show active':studentSelected == index}"
                               [student]="student"
-                              [selected]="studentSelected == student.id"
+                              [selected]="studentSelected == index"
                               [id]="index" role="tabpanel"
                               (edit)="onEdit($event)" (delete)="onDelete($event)"
                               *ngFor="let student of students; let index = index"></app-student-view>
@@ -52,20 +52,20 @@
             <div class="card-body">
                 <form [formGroup]="form">
                     <div class="form-group">
-                        <label for="id">Id:</label>
-                        <input class="form-control" id="id" formControlName="id" placeholder="11111111">
+                        <label for="noctrl">Numero de Control:</label>
+                        <input class="form-control" id="noctrl" formControlName="noctrl" placeholder="11111111">
                     </div>
                     <div class="form-group">
                         <label for="name">Nombre:</label>
                         <input class="form-control" id="name" formControlName="name" placeholder="Nombre">
                     </div>
                     <div class="form-group">
-                        <label for="lastName">Apellido:</label>
-                        <input class="form-control" id="lastName" formControlName="lastName" placeholder="Apellido">
+                        <label for="lastname">Apellido:</label>
+                        <input class="form-control" id="lastname" formControlName="lastname" placeholder="Apellido">
                     </div>
                     <div class="form-group">
-                        <label for="s_lastName">Segundo Apellido:</label>
-                        <input class="form-control" id="s_lastName" formControlName="s_lastName"
+                        <label for="s_lastname">Segundo Apellido:</label>
+                        <input class="form-control" id="s_lastname" formControlName="s_lastname"
                                placeholder="Segundo Apellido">
                     </div>
                     <div class="form-group">
@@ -83,8 +83,8 @@
                         </div-->
                     </div>
                     <div class="form-group">
-                        <label for="bloodType">Tipo de Sangre:</label>
-                        <input class="form-control" id="bloodType" formControlName="bloodType" placeholder="O+">
+                        <label for="bloodtype">Tipo de Sangre:</label>
+                        <input class="form-control" id="bloodtype" formControlName="bloodtype" placeholder="O+">
                     </div>
                     <div class="form-group">
                         <label for="status">Estado Civil:</label>
@@ -105,7 +105,7 @@
             <div class="card-footer">
                 <button type="button" class="btn btn-outline-danger" (click)="onCancel()">Cancelar</button>
                 <button type="button" class="btn btn-outline-info" [disabled]="form.invalid || !anyChange"
-                        (click)="onSave(form.controls.id.value)">
+                        (click)="onSave(form.controls.noctrl.value)">
                     <span *ngIf="!isSaving">Guardar</span>
                     <span *ngIf="isSaving"><i class="fa fa-spinner fa-pulse fa-fw"></i>Guardando...</span>
                 </button>

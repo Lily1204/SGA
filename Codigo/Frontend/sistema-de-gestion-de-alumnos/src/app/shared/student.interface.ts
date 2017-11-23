@@ -1,16 +1,16 @@
 export interface StudentInterface {
 
-    id: number;
+    noctrl: number;
+
+    lastname: string;
+
+    s_lastname: string;
 
     name: string;
 
-    lastName: string;
-
-    s_lastName: string;
-
     birthday: string;
 
-    bloodType: string;
+    bloodtype: string;
 
     status: string;
 

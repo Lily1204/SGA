@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-xl navbar-dark bg-info justify-content-center">
     <a class="navbar-brand">Sistema De Gestión De Alumnos</a>
     <button *ngIf="userService.isAuthenticate()" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
+            data-target="#navbarContent" aria-controls="navbarContent" [attr.aria-expanded]="!isCollapsed"
+            aria-label="Toggle navigation" (click)="isExpanded = !isExpanded">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div *ngIf="userService.isAuthenticate()" class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div *ngIf="userService.isAuthenticate()" class="collapse navbar-collapse" id="navbarContent" [ngbCollapse]="!isExpanded">
         <ul class="navbar-nav mr-auto">
             <li class="navbar-item">
                 <a class="nav-link" [routerLink]="['/professor']">Home</a>

@@ -10,6 +10,8 @@ import {UserService} from './services/user.service';
 })
 export class AppComponent {
 
+    isExpanded: boolean;
+
     constructor(public userService: UserService,
                 private router: Router) {
     }

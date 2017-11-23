@@ -1,12 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+
 import * as _ from 'underscore';
 
+import {ToastsManager} from 'ng2-toastr';
+
 import {ProfessorService} from '../../services/professor.service';
+import {UserService} from '../../services/user.service';
+
 import {StudentInterface} from '../../shared/student.interface';
 
-import {UserService} from '../../services/user.service';
 
 @Component({
     selector: 'app-professor',
@@ -30,10 +34,12 @@ export class ProfessorComponent implements OnInit {
 
     form: FormGroup;
 
-    constructor(fb: FormBuilder,
-                private professorService: ProfessorService,
+    constructor(private professorService: ProfessorService,
                 private userService: UserService,
-                private router: Router) {
+                private router: Router,
+                public toast: ToastsManager,
+                vcr: ViewContainerRef, fb: FormBuilder) {
+
         if (!this.userService.isAuthenticate()) {
             this.router.navigate(['/logging']);
         }
@@ -50,7 +56,7 @@ export class ProfessorComponent implements OnInit {
             idinge: ['', Validators.required]
         });
 
-
+        this.toast.setRootViewContainerRef(vcr);
     }
 
     ngOnInit(): void {
@@ -81,17 +87,11 @@ export class ProfessorComponent implements OnInit {
                 idinge: 0
             }];
             this.studentSelected = 0;
-        })
-        ;
+        });
     }
 
     onCancel() {
-        this.isEditing = false;
-        this.isCreating = false;
-        this.studentToEdit = null;
-        if (this.students) {
-            this.studentSelected = 0;
-        }
+        this.resetView();
     }
 
     onCreate() {
@@ -107,14 +107,83 @@ export class ProfessorComponent implements OnInit {
     }
 
     onDelete(id: number) {
-        console.log(id);
+        this.professorService.deleteStudent(id)
+            .subscribe(
+                () => this.onSuccess('El alumno ha sido eliminado con exito', '¡Listo!'),
+                () => this.onError());
     }
 
     onSave(id: number) {
-        console.log(id);
+        if (this.isEditing) {
+            this.professorService
+                .updateStudent(id, this.form.getRawValue())
+                .subscribe(
+                    () => {
+                        this.onSuccess(
+                            'Se ha actualizado al alumno '
+                            + this.form.controls.name.value
+                            + ' con exito', '¡Listo!');
+                        this.resetView();
+                    }, () => this.onError());
+        } else if (this.isCreating) {
+            this.professorService
+                .createStudent(this.form.getRawValue())
+                .subscribe(
+                    () => {
+                        this.onSuccess(
+                            'Se ha dado de alta al alumno '
+                            + this.form.controls.name.value
+                            + ' con exito', '¡Listo!');
+                        this.resetView();
+                    }, () => this.onError());
+        } else {
+            this.onError();
+        }
+    }
+
+    resetView() {
+        this.isEditing = false;
+        this.isCreating = false;
+        this.studentToEdit = null;
+        if (this.students) {
+            this.studentSelected = 0;
+        }
     }
 
     selectStudent(id: number) {
         this.studentSelected = id;
     }
+
+    onSuccess(message: string, title?: string) {
+        this.toast.success(message, title, {positionClass: 'toast-bottom-right', showCloseButton: true});
+    }
+
+    onError(message?: string, title?: string) {
+        this.toast
+            .error(
+                message ? message : `Al parecer esto se salio de control,
+                ¿Puedes intentarlo de nuevo? Si el problema persiste comunicate con el administrador`,
+                title ? title : 'Oh!', {positionClass: 'toast-bottom-right', showCloseButton: true});
+    }
+
+    /*
+    showSuccess() {
+        this.toast.success('You are awesome!', 'Success!');
+    }
+
+    showError() {
+        this.toast.error('This is not good!', 'Oops!');
+    }
+
+    showWarning() {
+        this.toast.warning('You are being warned.', 'Alert!');
+    }
+
+    showInfo() {
+        this.toast.info('Just some information for you.');
+    }
+
+    showCustom() {
+        this.toast.custom('<span style="color: red">Message in red.</span>', null, {enableHTML: true});
+    }*/
 }

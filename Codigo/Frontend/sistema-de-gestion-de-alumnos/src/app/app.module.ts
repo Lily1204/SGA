@@ -4,6 +4,8 @@ import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 import {ROUTES} from './app.routes';
 
 import {AppComponent} from './app.component';
@@ -24,7 +26,8 @@ import {UserService} from './services/user.service';
         LoginModule,
         LayoutModule,
         RouterModule.forRoot(ROUTES, {useHash: true}),
-        CommonModule
+        CommonModule,
+        NgbModule
     ],
     providers: [
         UserService,

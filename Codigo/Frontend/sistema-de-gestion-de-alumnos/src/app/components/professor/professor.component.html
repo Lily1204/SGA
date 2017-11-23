@@ -23,27 +23,91 @@
             >
                 {{student.name}} {{student.lastName}}
             </a>
+            <a class="list-group-item list-group-item-action" [ngClass]="{'active':studentSelected == -1}"
+               (click)="onCreate()">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> Dar de Alta un Alumno
+            </a>
         </div>
     </div>
-    <div class="col-8" *ngIf="!editStudent || !isCreating; else editStudent">
+    <div class="col-8" *ngIf="!isEditing && !isCreating; else editStudent">
         <div class="tab-content" id="nav-tabContent">
             <app-student-view class="tab-pane fade" [ngClass]="{'show active':studentSelected == student.id}"
                               [student]="student"
                               [selected]="studentSelected == student.id"
                               [id]="index" role="tabpanel"
+                              (edit)="onEdit($event)" (delete)="onDelete($event)"
                               *ngFor="let student of students; let index = index"></app-student-view>
+            <div class="card bg-primary" *ngIf="studentSelected == -1">
+                <div class="card-header">
+                    No hay nada por aquí, ¿Que tal si agregamos algo?
+                </div>
+                <div class="card-body">
+                    <i class="fa fa-exclamation fa-5x" aria-hidden="true"></i>
+                </div>
+            </div>
         </div>
     </div>
-    <ng-template class="col-8" #editStudent>
-        <form [formGroup]="form">
-            <div class="form-group">
-                <label for="id">Id:</label>
-                <input class="form-control" id="id" [formControlName]="id" placeholder="15011213">
+    <ng-template #editStudent>
+        <div class="card">
+            <div class="card-body">
+                <form [formGroup]="form">
+                    <div class="form-group">
+                        <label for="id">Id:</label>
+                        <input class="form-control" id="id" formControlName="id" placeholder="11111111">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Nombre:</label>
+                        <input class="form-control" id="name" formControlName="name" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Apellido:</label>
+                        <input class="form-control" id="lastName" formControlName="lastName" placeholder="Apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="s_lastName">Segundo Apellido:</label>
+                        <input class="form-control" id="s_lastName" formControlName="s_lastName"
+                               placeholder="Segundo Apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="birthday">Fecha de Nacimiento:</label>
+                        <input class="form-control" id="birthday" formControlName="birthday" type="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="bloodType">Tipo de Sangre:</label>
+                        <input class="form-control" id="bloodType" formControlName="bloodType" placeholder="O+">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Estado Civil:</label>
+                        <input class="form-control" id="status" formControlName="status"
+                               placeholder="Soltero, Casado, Divoricado, ...">
+                    </div>
+                    <div class="form-group">
+                        <label for="semester">Semestre:</label>
+                        <input class="form-control" id="semester" formControlName="semester" type="number"
+                               placeholder="5">
+                    </div>
+                    <div class="form-group">
+                        <label for="idinge">Id Ingenieria:</label>
+                        <input class="form-control" id="idinge" formControlName="idinge" type="number" placeholder="5">
+                    </div>
+                </form>
             </div>
-        </form>
+            <div class="card-footer">
+                <button type="button" class="btn btn-outline-danger" (click)="onCancel()">Cancelar</button>
+                <button type="button" class="btn btn-outline-info" [disabled]="form.invalid || !anyChange"
+                        (click)="onSave(form.controls.id.value)">
+                    <span *ngIf="!isSaving">Guardar</span>
+                    <span *ngIf="isSaving"><i class="fa fa-spinner fa-pulse fa-fw"></i>Guardando...</span>
+                </button>
+            </div>
+        </div>
     </ng-template>
 </div>
-<ng-template class="row container mx-auto" #loading>
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw text-info"></i>
-    <span>Loading...</span>
+<ng-template #loading>
+    <div class="row container mx-auto mt-2">
+        <div class="col align-self-center">
+            <i class="fa fa-spinner fa-pulse fa-5x fa-fw text-info"></i>
+            <span>Loading...</span>
+        </div>
+    </div>
 </ng-template>

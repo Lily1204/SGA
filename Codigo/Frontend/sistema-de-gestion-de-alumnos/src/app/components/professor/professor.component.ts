@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
+import * as _ from 'underscore';
 
 import {ProfessorService} from '../../services/professor.service';
 import {StudentInterface} from '../../shared/student.interface';
@@ -15,11 +16,17 @@ export class ProfessorComponent implements OnInit {
 
     students: StudentInterface[];
 
+    studentToEdit: StudentInterface;
+
     studentSelected: number;
 
-    isEditting: boolean;
+    anyChange: boolean;
+
+    isEditing: boolean;
 
     isCreating: boolean;
+
+    isSaving: boolean;
 
     form: FormGroup;
 
@@ -47,6 +54,7 @@ export class ProfessorComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.form.valueChanges.subscribe(value => this.anyChange = !_.isEqual(value, this.studentToEdit));
         this.professorService.getAllStudents().subscribe(students => {
             this.students = students;
             this.studentSelected = 0;
@@ -56,7 +64,7 @@ export class ProfessorComponent implements OnInit {
                 name: 'Julio',
                 lastName: 'Perez',
                 s_lastName: 'Gracia',
-                birthday: '10/12/1995',
+                birthday: '1995-12-10',
                 bloodType: 'Desconocido',
                 status: 'Soltero',
                 semester: '5',
@@ -77,8 +85,36 @@ export class ProfessorComponent implements OnInit {
         ;
     }
 
+    onCancel() {
+        this.isEditing = false;
+        this.isCreating = false;
+        this.studentToEdit = null;
+        if (this.students) {
+            this.studentSelected = 0;
+        }
+    }
+
+    onCreate() {
+        this.form.reset();
+        this.isCreating = true;
+        this.studentSelected = -1;
+    }
+
+    onEdit(studentToEdit: StudentInterface) {
+        this.isEditing = true;
+        this.studentToEdit = studentToEdit;
+        this.form.patchValue(studentToEdit);
+    }
+
+    onDelete(id: number) {
+        console.log(id);
+    }
+
+    onSave(id: number) {
+        console.log(id);
+    }
+
     selectStudent(id: number) {
         this.studentSelected = id;
-        console.log(id);
     }
 }

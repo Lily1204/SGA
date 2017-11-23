@@ -3,9 +3,9 @@
         <div class="card-body">
             <form [formGroup]="form">
                 <div class="form-group">
-                    <label for="control_number">Numero de Control</label>
-                    <input type="number" class="form-control" id="control_number" placeholder="17011200"
-                           formControlName="control_number">
+                    <label for="user">Numero de Control</label>
+                    <input type="number" class="form-control" id="user" placeholder="17011200"
+                           formControlName="user">
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña</label>
@@ -13,8 +13,8 @@
                            formControlName="password">
                 </div>
                 <div class="justify-content-end">
-                    <button class="btn btn-primary" (click)="login()"
-                            [disabled]="form.controls.control_number.errors || form.controls.password.errors">
+                    <button class="btn btn-primary" (click)="login('professor')"
+                            [disabled]="form.controls.user?.errors || form.controls?.password.errors">
                         Iniciar sesión
                     </button>
                 </div>

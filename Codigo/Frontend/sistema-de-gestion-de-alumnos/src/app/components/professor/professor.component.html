@@ -1,0 +1,49 @@
+<!--table class="table">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Semestre</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let student of students">
+        <td>{{student.name}} {{student.lastName}}</td>
+        <td>{{student.semester}}</td>
+    </tr>
+    </tbody>
+</table-->
+
+<div class="row container mx-auto mt-2" *ngIf="students; else loading">
+    <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action" [ngClass]="{'active':studentSelected == student.id}"
+               [id]="index"
+               data-toggle="list" role="tab" (click)="selectStudent(student.id);"
+               *ngFor="let student of students; let index = index"
+            >
+                {{student.name}} {{student.lastName}}
+            </a>
+        </div>
+    </div>
+    <div class="col-8" *ngIf="!editStudent || !isCreating; else editStudent">
+        <div class="tab-content" id="nav-tabContent">
+            <app-student-view class="tab-pane fade" [ngClass]="{'show active':studentSelected == student.id}"
+                              [student]="student"
+                              [selected]="studentSelected == student.id"
+                              [id]="index" role="tabpanel"
+                              *ngFor="let student of students; let index = index"></app-student-view>
+        </div>
+    </div>
+    <ng-template class="col-8" #editStudent>
+        <form [formGroup]="form">
+            <div class="form-group">
+                <label for="id">Id:</label>
+                <input class="form-control" id="id" [formControlName]="id" placeholder="15011213">
+            </div>
+        </form>
+    </ng-template>
+</div>
+<ng-template class="row container mx-auto" #loading>
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw text-info"></i>
+    <span>Loading...</span>
+</ng-template>

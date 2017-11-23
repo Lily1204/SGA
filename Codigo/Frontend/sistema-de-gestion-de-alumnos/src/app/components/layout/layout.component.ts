@@ -1,19 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {ProfessorService} from '../../services/professor.service';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'app-layout',
-    templateUrl: './layout.component.html',
-    styleUrls: ['./layout.component.css']
+    templateUrl: './layout.component.html'
 })
-export class LayoutComponent implements OnInit {
-
-    constructor(private route: ActivatedRoute, private professorService: ProfessorService) {
-    }
-
-    ngOnInit(): void {
-        console.log(this.route);
-        this.professorService.getAllStudents().subscribe(next => console.log(next), error => console.log(error));
-    }
-}
+export class LayoutComponent {}

@@ -1,8 +1,20 @@
 export interface StudentInterface {
 
-    no_control: number;
+    id: number;
 
-    nombre: string;
+    name: string;
 
-    apellido: string;
+    lastName: string;
+
+    s_lastName: string;
+
+    birthday: string;
+
+    bloodType: string;
+
+    status: string;
+
+    semester: string;
+
+    idinge: number;
 }

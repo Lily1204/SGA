@@ -17,6 +17,9 @@ export class LoginComponent {
     constructor(fb: FormBuilder,
                 private userService: UserService,
                 private router: Router) {
+        if (this.userService.isAuthenticate()) {
+            this.router.navigate(['/professor']);
+        }
         this.form = fb.group({
             'user': ['', Validators.required],
             'password': ['', [

@@ -1,0 +1,15 @@
+<div class="card" *ngIf="selected">
+    <div class="card-body">
+        <h3 class="card-title">
+            {{student.name}} {{student.lastName}} {{student.s_lastName}}
+        </h3>
+        <ul>
+            <li>Id: {{student.id}}</li>
+            <li>Semestre: {{student.semester}}</li>
+            <li>Fecha de nacimiento: {{student.birthday}}</li>
+            <li>Tipo de Sangre: {{student.bloodType}}</li>
+            <li>Estado Civil: {{student.status}}</li>
+            <li>Id Ingenieria: {{student.idinge}}</li>
+        </ul>
+    </div>
+</div>

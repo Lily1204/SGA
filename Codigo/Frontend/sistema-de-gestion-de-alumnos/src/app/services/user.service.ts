@@ -8,12 +8,20 @@ export class UserService {
         console.log(loginInfo);
         return new Observable(observer => {
             localStorage.setItem('token', '123456');
-            localStorage.setItem('userName', `{"user": ${loginInfo.user},"name": "Julio", "lastName": "Perez", "rol": "${loginInfo.rol}"}`);
+            localStorage.setItem('userInfo', `{"user": ${loginInfo.user},"name": "Julio", "lastName": "Perez", "rol": "${loginInfo.rol}"}`);
             observer.next('authenticate');
         });
     }
 
+    logout() {
+        localStorage.clear();
+    }
+
+    isAuthenticate(): boolean {
+        return this.getUserInfo() != null;
+    }
+
     getUserInfo() {
-        // localStorage.getItem('token')
+        return localStorage.getItem('userInfo');
     }
 }

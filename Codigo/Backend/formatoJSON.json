@@ -1,0 +1,38 @@
+    {
+        "id":12055348,
+        "firstname":"Lopez",
+        "lastaname": "Morales",
+        "name":"Julian",
+        "birtdate":"1995-03-23",
+        "bloodtype":"O negativo",
+        "status":"Soltero",
+        "semester":6,
+        "ideng":123
+    }
+
+    {
+        "lastaname": "Morales",
+        "s_lastname":"xxx",
+        "name":"Julian",
+        "birthdate":"19950323",
+        "bloodtype":"O negativo",
+        "status":"Soltero",
+        "semester":6,
+        "idinge":123
+    }
+
+
+{
+    "name":"Emerson"
+}
+
+
+$strInputData->id, 
+$strInputData->firstname, 
+$strInputData->lastname,
+$strInputData->name,
+$strInputData->birtdate,
+$strInputData->bloodtype,
+$strInputData->status,
+$strInputData->semester,
+$strInputData->ideng) ){

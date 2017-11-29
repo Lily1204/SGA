@@ -49,7 +49,7 @@ export class ProfessorComponent implements OnInit {
             lastname: ['', Validators.required],
             s_lastname: ['', Validators.required],
             name: ['', Validators.required],
-            birthday: ['', Validators.required],
+            birthdate: ['', Validators.required],
             bloodtype: ['', Validators.required],
             status: ['', Validators.required],
             semester: ['', Validators.required],
@@ -61,34 +61,38 @@ export class ProfessorComponent implements OnInit {
 
     ngOnInit(): void {
         this.form.valueChanges.subscribe(value => this.anyChange = !_.isEqual(value, this.studentToEdit));
-        this.professorService.getAllStudents().subscribe(students => {
-            this.students = students;
-            this.studentSelected = 0;
-        }, error => {
-            this.students = error.error;
-            /*[{
-                            noctrl: 0,
-                            name: 'Julio',
-                            lastName: 'Perez',
-                            s_lastName: 'Gracia',
-                            birthday: '1995-12-10',
-                            bloodType: 'Desconocido',
-                            status: 'Soltero',
-                            semester: '5',
-                            idinge: 0
-                        }, {
-                            noctrl: 1,
-                            name: 'Damian',
-                            lastName: 'Zamora',
-                            s_lastName: 'Celiseo',
-                            birthday: 'Desconocido',
-                            bloodType: 'Desconocido',
-                            status: 'Soltero',
-                            semester: '5',
-                            idinge: 0
-                        }];*/
-            this.studentSelected = 0;
-        });
+        this.loadStudents();
+    }
+
+    loadStudents() {
+      this.professorService.getAllStudents().subscribe(students => {
+          this.students = students;
+          this.studentSelected = 0;
+      }, error => {
+          this.students = error.error;
+          /*[{
+                          noctrl: 0,
+                          name: 'Julio',
+                          lastName: 'Perez',
+                          s_lastName: 'Gracia',
+                          birthday: '1995-12-10',
+                          bloodType: 'Desconocido',
+                          status: 'Soltero',
+                          semester: '5',
+                          idinge: 0
+                      }, {
+                          noctrl: 1,
+                          name: 'Damian',
+                          lastName: 'Zamora',
+                          s_lastName: 'Celiseo',
+                          birthday: 'Desconocido',
+                          bloodType: 'Desconocido',
+                          status: 'Soltero',
+                          semester: '5',
+                          idinge: 0
+                      }];*/
+          this.studentSelected = 0;
+      });
     }
 
     onCancel() {
@@ -110,7 +114,10 @@ export class ProfessorComponent implements OnInit {
     onDelete(id: number) {
         this.professorService.deleteStudent(id)
             .subscribe(
-                () => this.onSuccess('El alumno ha sido eliminado con exito', '¡Listo!'),
+                () => {
+                  this.loadStudents();
+                  this.onSuccess('El alumno ha sido eliminado con exito', '¡Listo!');
+                },
                 () => this.onError());
     }
 
@@ -123,6 +130,7 @@ export class ProfessorComponent implements OnInit {
                 .updateStudent(id, data)
                 .subscribe(
                     () => {
+                        this.loadStudents();
                         this.onSuccess(
                             'Se ha actualizado al alumno '
                             + this.form.controls.name.value
@@ -135,6 +143,7 @@ export class ProfessorComponent implements OnInit {
                 .createStudent(this.form.getRawValue())
                 .subscribe(
                     () => {
+                        this.loadStudents();
                         this.onSuccess(
                             'Se ha dado de alta al alumno '
                             + this.form.controls.name.value

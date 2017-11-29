@@ -13,11 +13,11 @@ export class ProfessorService {
     }
 
     getAllStudents() {
-        return this.http.get<StudentInterface[]>(this.uri + 'peoples');
+        return this.http.get<StudentInterface[]>(this.uri + 'people');
     }
 
     getStudent(id: number) {
-        return this.http.get<StudentInterface[]>(this.uri + 'peoples/' + id);
+        return this.http.get<StudentInterface[]>(this.uri + 'people/' + id);
     }
 
     createStudent(student: any) {

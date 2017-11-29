@@ -8,7 +8,7 @@ export interface StudentInterface {
 
     name: string;
 
-    birthday: string;
+    birthdate: string;
 
     bloodtype: string;
 

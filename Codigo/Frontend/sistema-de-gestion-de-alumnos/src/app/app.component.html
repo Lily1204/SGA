@@ -1,4 +1,20 @@
 <nav class="navbar navbar-expand-xl navbar-dark bg-info justify-content-center">
     <a class="navbar-brand">Sistema De Gestión De Alumnos</a>
+    <button *ngIf="userService.isAuthenticate()" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarContent" aria-controls="navbarContent" [attr.aria-expanded]="!isCollapsed"
+            aria-label="Toggle navigation" (click)="isExpanded = !isExpanded">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div *ngIf="userService.isAuthenticate()" class="collapse navbar-collapse" id="navbarContent" [ngbCollapse]="!isExpanded">
+        <ul class="navbar-nav mr-auto">
+            <li class="navbar-item">
+                <a class="nav-link" [routerLink]="['/professor']">Home</a>
+            </li>
+            <li class="navbar-item">
+                <a class="nav-link" (click)="logout()">Logout</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 <router-outlet></router-outlet>

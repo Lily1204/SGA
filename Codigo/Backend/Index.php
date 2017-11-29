@@ -1,5 +1,5 @@
 <?php
-    require_once "PeopleApi.php";//Llama a la clase peopleApi    
-    $peopleApi = new PeopleApi();//crea objeto 
-    $peopleApi->Api();//instancia el metodo api
+    require_once "StudentApi.php";// Llama a la clase studentApi    
+    $studentApi = new StudentApi();// Crea objeto 
+    $studentApi->Api();// Instancia el metodo api para envio de peticiones
 ?>

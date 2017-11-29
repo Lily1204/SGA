@@ -1,0 +1,123 @@
+<!--table class="table">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Semestre</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let student of students">
+        <td>{{student.name}} {{student.lastName}}</td>
+        <td>{{student.semester}}</td>
+    </tr>
+    </tbody>
+</table-->
+
+<div class="row container mx-auto mt-2" *ngIf="students; else loading">
+    <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action" [ngClass]="{'active':studentSelected == index}"
+               [id]="index"
+               data-toggle="list" role="tab" (click)="selectStudent(index);"
+               *ngFor="let student of students; let index = index"
+            >
+                {{student.name}} {{student.lastname}}
+            </a>
+            <a class="list-group-item list-group-item-action" [ngClass]="{'active':studentSelected == -1}"
+               (click)="onCreate()">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i> Dar de Alta un Alumno
+            </a>
+        </div>
+    </div>
+    <div class="col-8" *ngIf="!isEditing && !isCreating; else editStudent">
+        <div class="tab-content" id="nav-tabContent">
+            <app-student-view class="tab-pane fade" [ngClass]="{'show active':studentSelected == index}"
+                              [student]="student"
+                              [selected]="studentSelected == index"
+                              [id]="index" role="tabpanel"
+                              (edit)="onEdit($event)" (delete)="onDelete($event)"
+                              *ngFor="let student of students; let index = index"></app-student-view>
+            <div class="card bg-primary" *ngIf="studentSelected == -1">
+                <div class="card-header">
+                    No hay nada por aquí, ¿Que tal si agregamos algo?
+                </div>
+                <div class="card-body">
+                    <i class="fa fa-exclamation fa-5x" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #editStudent>
+        <div class="card">
+            <div class="card-body">
+                <form [formGroup]="form">
+                    <div class="form-group">
+                        <label for="noctrl">Numero de Control:</label>
+                        <input class="form-control" id="noctrl" formControlName="noctrl" placeholder="11111111">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Nombre:</label>
+                        <input class="form-control" id="name" formControlName="name" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Apellido:</label>
+                        <input class="form-control" id="lastname" formControlName="lastname" placeholder="Apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="s_lastname">Segundo Apellido:</label>
+                        <input class="form-control" id="s_lastname" formControlName="s_lastname"
+                               placeholder="Segundo Apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="birthdate">Fecha de Nacimiento:</label>
+                        <input class="form-control" placeholder="yyyy-mm-dd" id="birthdate" type="date"
+                               formControlName="birthdate">
+                        <!--div class="input-group">
+                            <input class="form-control" placeholder="yyyy-mm-dd" id="birthday" type="date"
+                                   formControlName="birthday"
+                                   name="dp" ngbDatepicker #d="ngbDatepicker" [minDate]="{ year: 1900, month: 1 }"
+                                   [startDate]="{year: form.controls.birthday.value.}">
+                            <button class="input-group-addon" (click)="d.toggle()" type="button">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </button>
+                        </div-->
+                    </div>
+                    <div class="form-group">
+                        <label for="bloodtype">Tipo de Sangre:</label>
+                        <input class="form-control" id="bloodtype" formControlName="bloodtype" placeholder="O+">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Estado Civil:</label>
+                        <input class="form-control" id="status" formControlName="status"
+                               placeholder="Soltero, Casado, Divoricado, ...">
+                    </div>
+                    <div class="form-group">
+                        <label for="semester">Semestre:</label>
+                        <input class="form-control" id="semester" formControlName="semester" type="number"
+                               placeholder="5">
+                    </div>
+                    <div class="form-group">
+                        <label for="idinge">Id Ingenieria:</label>
+                        <input class="form-control" id="idinge" formControlName="idinge" type="number" placeholder="5">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-outline-danger" (click)="onCancel()">Cancelar</button>
+                <button type="button" class="btn btn-outline-info" [disabled]="form.invalid || !anyChange"
+                        (click)="onSave(form.controls.noctrl.value)">
+                    <span *ngIf="!isSaving">Guardar</span>
+                    <span *ngIf="isSaving"><i class="fa fa-spinner fa-pulse fa-fw"></i>Guardando...</span>
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</div>
+<ng-template #loading>
+    <div class="row justify-content-center mx-auto mt-2">
+        <div class="col align-self-center">
+            <i class="fa fa-spinner fa-pulse fa-5x fa-fw text-info"></i>
+            <span>Loading...</span>
+        </div>
+    </div>
+</ng-template>

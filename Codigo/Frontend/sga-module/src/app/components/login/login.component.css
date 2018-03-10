@@ -1,0 +1,28 @@
+/**.img-container {
+    transition: transform .1s ease;
+}
+
+.img-container img {
+    // opacity: .5;
+    transform: translate(0, 0);
+    /*
+    Change the opacity value to change how "faded" you want the image to appear when it is not hovered.
+    //
+    transition: opacity .25s ease-in-out;
+}
+.img-container img:hover {
+    opacity: 1;
+}
+*/
+
+img.logging-background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.row .col.card {
+    opacity: 0.9;
+}

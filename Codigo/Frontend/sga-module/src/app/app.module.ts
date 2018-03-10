@@ -1,8 +1,16 @@
 import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
+import {routes} from './app.routes';
+
+import {AuthGuardService} from './services/auth-guard.service';
+import {StudentService} from './services/student.service';
+
+import * as $ from 'jquery';
 
 @NgModule({
     declarations: [
@@ -10,9 +18,14 @@ import {AppComponent} from './app.component';
     ],
     imports: [
         BrowserModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        RouterModule.forRoot(routes, {useHash: true}),
+        HttpClientModule
     ],
-    providers: [],
+    providers: [
+        AuthGuardService,
+        StudentService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

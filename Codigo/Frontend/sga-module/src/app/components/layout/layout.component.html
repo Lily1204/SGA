@@ -1,0 +1,39 @@
+<div class="row m-auto p-0 container-fluid">
+    <div class="col-lg-2 sidebar">
+        <div class="col-lg-2 menu-container">
+            <ul class="menu">
+                <li routerLink="academic-load" class="menu-item">
+                    <fa-icon [icon]="graduationCap"></fa-icon>
+                    Carga Academica
+                </li>
+                <li routerLink="update-student-data" class="menu-item">
+                    <fa-icon [icon]="edit"></fa-icon>
+                    Actualizar Datos del Alumno
+                </li>
+                <li routerLink="report-card" class="menu-item">
+                    <fa-icon [icon]="print"></fa-icon>
+                    Imprimir Boleta
+                </li>
+                <li routerLink="schedule" class="menu-item">
+                    <fa-icon [icon]="print"></fa-icon>
+                    Imprimir Horario
+                </li>
+                <li class="menu-item">
+                    <fa-icon [icon]="signOutAlt"></fa-icon>
+                    Cerrar Sesión
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col">
+        <div class="container">
+            <router-outlet>
+                <div *ngIf="pageIsLoading" class="mt-2">
+                    <div class="loader spin m-auto">
+                        <div class="text-center mt-4 reverse-spin">Loading</div>
+                    </div>
+                </div>
+            </router-outlet>
+        </div>
+    </div>
+</div>

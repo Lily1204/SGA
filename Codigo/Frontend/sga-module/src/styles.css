@@ -94,3 +94,7 @@ button div.loader {
 .sidebar .menu-item:hover {
     background-color: #17A398;
 }
+
+.action {
+    cursor: pointer;
+}

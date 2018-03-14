@@ -1,0 +1,6 @@
+<div class="border m-1 p-2" [ngClass]="{'border-success': _selectedItem, 'bg-success': _disabled, 'action': !_disabled}"
+     (click)="onSelectedItem()">
+    <p>{{subject?.code}}</p>
+    <p>{{subject?.name}}</p>
+    <p>{{subject?.credits}}</p>
+</div>

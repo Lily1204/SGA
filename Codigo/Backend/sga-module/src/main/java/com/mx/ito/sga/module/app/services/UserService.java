@@ -11,7 +11,7 @@ public class UserService {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public @ResponseBody
-    String userLogin() {
-        return "";
+    boolean userLogin() {
+        return true;
     }
 }

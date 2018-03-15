@@ -118,10 +118,12 @@ export class LoginComponent implements OnDestroy {
                 /**
                  * This finally method may be deleted when the user login service be finished
                  * */
-                .finally(() => this.router.navigate(['home'])).subscribe(() => {
+                // .finally(() => this.router.navigate(['home']))
+              .subscribe((response) => {
                 /**Recibe la respuesta del servidor en caso
                  * de que se haya completado con exito
                  * */
+                console.log(response);
             }, () => {
                 /**
                  * Recibe la respuesta en caso de que algo haya fallado

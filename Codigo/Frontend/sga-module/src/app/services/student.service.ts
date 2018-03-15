@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 
 import {Observable} from 'rxjs/Observable';
 
-import {LoggingRequest} from '../components/interfaces/logging-request';
+import {LoggingRequest} from '../models/logging-request';
 
 @Injectable()
 export class StudentService {
@@ -12,7 +12,7 @@ export class StudentService {
     }
 
     public userLogin(body: LoggingRequest): Observable<any> {
-        return this.http.post<any>(``, body);
+        return this.http.post<any>(`/user/login`, body);
     }
 
     public subjectsInSemester() {

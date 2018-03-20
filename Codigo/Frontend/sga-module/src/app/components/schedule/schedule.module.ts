@@ -4,14 +4,15 @@ import {RouterModule} from '@angular/router';
 import {ScheduleComponent} from './schedule.component';
 
 @NgModule({
-    declarations: [
-        ScheduleComponent
-    ],
-    imports: [
-        RouterModule.forChild([{path: '', component: ScheduleComponent}])
-    ],
-    exports: [
-        ScheduleComponent
-    ]
+  declarations: [
+    ScheduleComponent
+  ],
+  imports: [
+    RouterModule.forChild([{path: '', component: ScheduleComponent}])
+  ],
+  exports: [
+    ScheduleComponent
+  ]
 })
-export class ScheduleModule {}
+export class ScheduleModule {
+}

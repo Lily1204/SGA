@@ -28,17 +28,17 @@ import {ToastModule} from 'ng2-toastr';
  * el uso en otros modulos
  * */
 @NgModule({
-    declarations: [
-        AcademicLoadComponent
-    ],
-    imports: [
-        RouterModule.forChild([{path: '', component: AcademicLoadComponent}]),
-        AcademicLoadFormModule,
-        ToastModule.forRoot()
-    ],
-    exports: [
-        AcademicLoadComponent
-    ]
+  declarations: [
+    AcademicLoadComponent
+  ],
+  imports: [
+    RouterModule.forChild([{path: '', component: AcademicLoadComponent}]),
+    AcademicLoadFormModule,
+    ToastModule.forRoot()
+  ],
+  exports: [
+    AcademicLoadComponent
+  ]
 })
 /**
  * Clase del modulo de Academic Load

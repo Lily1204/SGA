@@ -13,20 +13,20 @@ import {StudentService} from './services/student.service';
 import * as $ from 'jquery';
 
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        RouterModule.forRoot(routes, {useHash: true}),
-        HttpClientModule
-    ],
-    providers: [
-        AuthGuardService,
-        StudentService
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    RouterModule.forRoot(routes, {useHash: true}),
+    HttpClientModule
+  ],
+  providers: [
+    AuthGuardService,
+    StudentService
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

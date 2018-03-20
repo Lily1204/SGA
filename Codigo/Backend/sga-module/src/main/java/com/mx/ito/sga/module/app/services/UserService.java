@@ -15,9 +15,8 @@ public class UserService {
         return true;
     }
 
-    @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    public @ResponseBody
-    HttpStatus userLogout() {
-        return HttpStatus.NO_CONTENT;
+    @RequestMapping(value = "/tavo", method = RequestMethod.GET)
+    public @ResponseBody String tavo() {
+        return "es bien gay v:";
     }
 }

@@ -1,8 +1,8 @@
 nav.navbar image {
-  background-repeat: no-repeat;
+    background-repeat: no-repeat;
 }
 
 nav.navbar {
-  z-index: 1;
-  background-color: #fafafa;
+    z-index: 1;
+    background-color: #fafafa;
 }

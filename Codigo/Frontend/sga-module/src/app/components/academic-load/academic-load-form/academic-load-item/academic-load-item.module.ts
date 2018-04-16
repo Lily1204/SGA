@@ -7,7 +7,6 @@
  * */
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-
 /**
  * Componente de Academic Load Item
  * */

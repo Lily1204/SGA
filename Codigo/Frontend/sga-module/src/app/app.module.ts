@@ -1,21 +1,50 @@
+/**
+ * Clase para el modulo principal
+ **/
+
+/**
+ * Librerias por default de angular
+ * */
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {BrowserModule} from '@angular/platform-browser';
-// Importacion de Angular Material
+/**
+ * Importacion de Angular Material
+ * */
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
-// Herramientas a utilizar de Angular material
-import {  MatTableModule  } from '@angular/material/table';
-import {  MatButtonModule  } from '@angular/material/button';
+/**
+ * Herramientas a utilizar de Angular material
+ * */
+import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
 
+/**
+ * Componente de App
+ * */
 import {AppComponent} from './app.component';
+
+/**
+ * Archivo de rutas
+ */
 import {routes} from './app.routes';
 
+/**
+ * Servicios utilizados por la app
+ */
 import {AuthGuardService} from './services/auth-guard.service';
 import {StudentService} from './services/student.service';
 
 import * as $ from 'jquery';
+import {StoreModule} from '@ngrx/store';
 
+/**
+ * Declaracion de modulo tomando las anotaciones de angular
+ * declarations = Declara los componentes del modulo
+ * imports = Declara los mudulos importados
+ * providers = Declara los servicios usados
+ * bootstrap = Declara el cargador de la app
+ * */
 @NgModule({
   declarations: [
     AppComponent
@@ -23,10 +52,9 @@ import * as $ from 'jquery';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatTableModule,
-    MatButtonModule,
+    HttpClientModule,
     RouterModule.forRoot(routes, {useHash: true}),
-    HttpClientModule
+    StoreModule.forRoot({})
   ],
   providers: [
     AuthGuardService,
@@ -34,5 +62,8 @@ import * as $ from 'jquery';
   ],
   bootstrap: [AppComponent]
 })
+/**
+ * Clase del modulo de la aplicacion
+ * */
 export class AppModule {
 }

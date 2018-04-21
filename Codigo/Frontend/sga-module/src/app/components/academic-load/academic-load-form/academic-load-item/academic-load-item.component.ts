@@ -6,7 +6,6 @@
  * Librerias por default de angular
  * */
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-
 /**
  * Interface de tipo "Subject"
  * */

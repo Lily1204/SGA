@@ -1,1 +1,50 @@
-report-card
+<div id="container">
+
+  <h2>BOLETA</h2>
+
+  <div class="dataStudent">
+    <ul *ngFor="let item of student" class="data">
+      <li class="date">Fecha: {{item.date}}</li>
+      <li>Nombre: {{item.name}}</li>
+      <li>Ingenieria: {{item.career}}</li>
+      <li>Progreso avanzado: {{item.progress}}</li>
+      <li class="average">Promedio semestre: {{item.qualification}}</li>
+    </ul>
+  </div>
+
+  <!--MATERIAL DESIGN-->
+
+  <mat-table class="lesson-table mat-elevation-z8" [dataSource]="dataSource">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let lesson">{{lesson.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="subject">
+      <mat-header-cell *matHeaderCellDef>MATERIA</mat-header-cell>
+      <mat-cell *matCellDef="let lesson">{{lesson.subject}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="score">
+      <mat-header-cell *matHeaderCellDef>CALIFICACION</mat-header-cell>
+      <mat-cell *matCellDef="let lesson">{{lesson.score}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="credits">
+      <mat-header-cell *matHeaderCellDef>CREDITOS</mat-header-cell>
+      <mat-cell *matCellDef="let lesson">{{lesson.credits}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let myRowData; columns: displayedColumns"></mat-row>
+
+  </mat-table>
+
+  <br />
+  <p>Firma electronica: {{signature}}</p>
+  <div class="fa-pull-right">
+    <button mat-raised-button color="primary">Imprimir</button>
+  </div>
+
+</div>

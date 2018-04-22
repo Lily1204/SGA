@@ -1,1 +1,54 @@
-schedule
+<!--https://gist.github.com/donnierayjones/6fd9802d992b2d8d6cfd-->
+<div id="container-schedule" class="container">
+	
+	<h1 class="title">
+		MI HORARIO 		
+	</h1>
+
+	<div class="student-data">
+		<ul *ngFor="let data of dataStudent">
+			<li>Fecha:  {{data.date}}</li>
+			<li>Nombre: {{data.name}}</li>
+			<li>Ingenieria:  {{data.career}}</li>
+			<li>Semestre:  {{data.semester}}</li>
+		</ul>
+	</div>
+
+	<!--HEADER DE DIAS DE LA SEMANA-->
+
+	<div class="week nav" >
+		<div class="day nav-link active" href="#">LUNES</div>
+		<div class="day nav-link disabled">MARTES</div>
+		<div class="day nav-link disabled">MIERCOLES</div>
+		<div class="day nav-link disabled">JUEVES</div>
+		<div class="day nav-link disabled">VIERNES</div>
+	</div>
+	
+	<!--HORARIO-->
+
+	<mat-table [dataSource]="mySchedule">
+		
+		<ng-container matColumnDef="hour">
+			<mat-header-cell *matHeaderCellDef></mat-header-cell>
+			<!--mat-cell *matCellDef="let item"></mat-cell-->
+		</ng-container>
+
+		<ng-container matColumnDef="group">
+			<mat-header-cell *matHeaderCellDef></mat-header-cell>
+			<!--mat-cell *matCellDef="let item"></mat-cell-->
+		</ng-container>
+
+		<ng-container matColumnDef="subject">
+			<mat-header-cell *matHeaderCellDef></mat-header-cell>
+			<!--mat-cell *matCellDef="let item"></mat-cell-->
+		</ng-container>
+
+		<ng-container matColumnDef="salon">
+			<mat-header-cell *matHeaderCellDef></mat-header-cell>
+			<!--mat-cell *matCellDef="let item"></mat-cell-->
+		</ng-container>
+
+	</mat-table>
+
+
+</div>

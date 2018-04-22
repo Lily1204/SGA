@@ -1,26 +1,16 @@
 h1 {
 	color:  red;
+	text-align: right;	
 }
 
-/*HEADER DE DIAS */
-.week {
-	background-color: #fff;
-	width: 90%;
-	height: 60px;
-	display: flex;
+/*TABLE SCHEDULE*/
 
-	flex-wrap: wrap;
-	justify-content: flex-end;	
-}
-
-
-.day {
-	width: 170px;
-	height: 60px;
-	background-color: #fff;
-	color:  black;
-	border-left: 2px solid black;
+.headerMain {
 	text-align: center;
+	font-size: 14px;	
 }
 
-/**/
+.subjects {	
+	text-align: center;
+	vertical-align: middle;
+}

@@ -14,64 +14,118 @@
 		</ul>
 	</div>
 
-	<!--HEADER DE DIAS DE LA SEMANA-->
-
-	<div class="week nav" >
-		<div class="day nav-link disabled">LUNES</div>
-		<div class="day nav-link disabled">MARTES</div>
-		<div class="day nav-link disabled">MIERCOLES</div>
-		<div class="day nav-link disabled">JUEVES</div>
-		<div class="day nav-link disabled">VIERNES</div>
-	</div>
-	
 	<!--HORARIO-->
 
-	<mat-table [dataSource]="mySchedule">
-		
-		<ng-container matColumnDef="Subject">
-			<mat-header-cell *matHeaderCellDef>Materia</mat-header-cell>
-			<mat-cell *matCellDef="let item">{{item.subject}}</mat-cell>
-		</ng-container>
+		´<table id="schedule" class="table table-striped">
 
-		<ng-container matColumnDef="Monday">			
-			<mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
-			<mat-cell *matCellDef="let item">{{item.hour}}</mat-cell>
-			<mat-header-cell *matHeaderCellDef>Salon</mat-header-cell>
-			<mat-cell *matCellDef="let item">{{item.salon}}</mat-cell>
-		</ng-container>
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col" class="headerMain">MATERIA</th>
+					<th scope="col" class="headerMain">LUNES</th>
+					<th scope="col" class="headerMain">MARTES</th>
+					<th scope="col" class="headerMain">MIERCOLES</th>
+					<th scope="col" class="headerMain">JUEVES</th>
+					<th scope="col" class="headerMain">VIERNES</th>
+				</tr>	
+			</thead>		
 
-		<ng-container matColumnDef="Tuesday">
-			<mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
-			<mat-cell *matCellDef="let item">{{item.hour}}</mat-cell>
-			<mat-header-cell *matHeaderCellDef>Salon</mat-header-cell>
-			<mat-cell *matCellDef="let item">{{item.salon}}</mat-cell>
-		</ng-container>
+			<tbody class="table">				
+				<tr><!--Crea una fila-->
+					<th>
+						<table>
+							<thead class="headerTable">
+								<tr>
+									<th>-</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="subjects" *ngFor="let sub of mySchedule">{{sub.subject}}</tr>											
+							</tbody>
+						</table>
+					</th>					
+					<th><!--Crea una columna-->
+						<table>
+							<thead class="headerTable">
+								<tr>
+									<th scope="col">Hora</th>
+									<th scope="col">Salon</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let sub of mySchedule">
+									<td>{{sub.hour}}</td>
+									<td>{{sub.salons.monday}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</th>
+					<th>
+						<table>
+							<thead class="headerTable">
+								<tr>
+									<th scope="col">Hora</th>
+									<th scope="col">Salon</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let sub of mySchedule">
+									<td>{{sub.hour}}</td>
+									<td>{{sub.salons.tuesday}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</th>
+					<th>
+						<table>
+							<thead class="headerTable">
+								<tr>
+									<th scope="col">Hora</th>
+									<th scope="col">Salon</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let sub of mySchedule">
+									<td>{{sub.hour}}</td>
+									<td>{{sub.salons.wednesday}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</th>
+					<th>
+						<table>
+							<thead class="headerTable">
+								<tr>
+									<th scope="col">Hora</th>
+									<th scope="col">Salon</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let sub of mySchedule">
+									<td>{{sub.hour}}</td>
+									<td>{{sub.salons.thursday}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</th>
+					<th>
+						<table>
+							<thead class="headerTable">
+								<tr>
+									<th scope="col">Hora</th>
+									<th scope="col">Salon</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let sub of mySchedule">
+									<td>{{sub.hour}}</td>
+									<td>{{sub.salons.friday}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</th>
+				</tr>
+			</tbody>
 
-		<ng-container matColumnDef="Wednesday">
-			<mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
-			<mat-cell *matCellDef="let item">{{item.hour}}</mat-cell>
-			<mat-header-cell *matHeaderCellDef>Salon</mat-header-cell>
-			<mat-cell *matCellDef="let item">{{item.salon}}</mat-cell>
-		</ng-container>
-
-		<ng-container matColumnDef="Thursday">
-			<mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
-			<mat-cell *matCellDef="let item">{{item.hour}}</mat-cell>
-			<mat-header-cell *matHeaderCellDef>Salon</mat-header-cell>
-			<mat-cell *matCellDef="let item">{{item.salon}}</mat-cell>
-		</ng-container>
-
-		<ng-container matColumnDef="Friday">
-			<mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
-			<mat-cell *matCellDef="let item">{{item.hour}}</mat-cell>
-			<mat-header-cell *matHeaderCellDef>Salon</mat-header-cell>
-			<mat-cell *matCellDef="let item">{{item.salon}}</mat-cell>
-		</ng-container>
-
-	</mat-table>
-
-	
-
-	
+		</table>
 
 </div>

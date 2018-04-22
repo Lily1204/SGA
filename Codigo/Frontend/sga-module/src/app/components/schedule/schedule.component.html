@@ -17,7 +17,7 @@
 	<!--HEADER DE DIAS DE LA SEMANA-->
 
 	<div class="week nav" >
-		<div class="day nav-link active" href="#">LUNES</div>
+		<div class="day nav-link disabled">LUNES</div>
 		<div class="day nav-link disabled">MARTES</div>
 		<div class="day nav-link disabled">MIERCOLES</div>
 		<div class="day nav-link disabled">JUEVES</div>
@@ -28,27 +28,50 @@
 
 	<mat-table [dataSource]="mySchedule">
 		
-		<ng-container matColumnDef="hour">
-			<mat-header-cell *matHeaderCellDef></mat-header-cell>
-			<!--mat-cell *matCellDef="let item"></mat-cell-->
+		<ng-container matColumnDef="Subject">
+			<mat-header-cell *matHeaderCellDef>Materia</mat-header-cell>
+			<mat-cell *matCellDef="let item">{{item.subject}}</mat-cell>
 		</ng-container>
 
-		<ng-container matColumnDef="group">
-			<mat-header-cell *matHeaderCellDef></mat-header-cell>
-			<!--mat-cell *matCellDef="let item"></mat-cell-->
+		<ng-container matColumnDef="Monday">			
+			<mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
+			<mat-cell *matCellDef="let item">{{item.hour}}</mat-cell>
+			<mat-header-cell *matHeaderCellDef>Salon</mat-header-cell>
+			<mat-cell *matCellDef="let item">{{item.salon}}</mat-cell>
 		</ng-container>
 
-		<ng-container matColumnDef="subject">
-			<mat-header-cell *matHeaderCellDef></mat-header-cell>
-			<!--mat-cell *matCellDef="let item"></mat-cell-->
+		<ng-container matColumnDef="Tuesday">
+			<mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
+			<mat-cell *matCellDef="let item">{{item.hour}}</mat-cell>
+			<mat-header-cell *matHeaderCellDef>Salon</mat-header-cell>
+			<mat-cell *matCellDef="let item">{{item.salon}}</mat-cell>
 		</ng-container>
 
-		<ng-container matColumnDef="salon">
-			<mat-header-cell *matHeaderCellDef></mat-header-cell>
-			<!--mat-cell *matCellDef="let item"></mat-cell-->
+		<ng-container matColumnDef="Wednesday">
+			<mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
+			<mat-cell *matCellDef="let item">{{item.hour}}</mat-cell>
+			<mat-header-cell *matHeaderCellDef>Salon</mat-header-cell>
+			<mat-cell *matCellDef="let item">{{item.salon}}</mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="Thursday">
+			<mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
+			<mat-cell *matCellDef="let item">{{item.hour}}</mat-cell>
+			<mat-header-cell *matHeaderCellDef>Salon</mat-header-cell>
+			<mat-cell *matCellDef="let item">{{item.salon}}</mat-cell>
+		</ng-container>
+
+		<ng-container matColumnDef="Friday">
+			<mat-header-cell *matHeaderCellDef>Hora</mat-header-cell>
+			<mat-cell *matCellDef="let item">{{item.hour}}</mat-cell>
+			<mat-header-cell *matHeaderCellDef>Salon</mat-header-cell>
+			<mat-cell *matCellDef="let item">{{item.salon}}</mat-cell>
 		</ng-container>
 
 	</mat-table>
 
+	
+
+	
 
 </div>

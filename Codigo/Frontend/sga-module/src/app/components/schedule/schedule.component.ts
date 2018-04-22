@@ -14,8 +14,9 @@ export class ScheduleComponent {
 		semester: 6
 	}]
 
-	dataSource:any = [{
-		
-	}]
+	dataSource:any =[
+		{subject: 'L. Interfaz', hour: ['8-9','8-9','8-9','8-9',''], salon:['06','L10','06','L7','']},
+		{subject: 'Automatas', hour: ['9-10','9-10','9-10','9-10','9-10'], salon:['18','18','18','L7','L7']},
+	]
 
 }

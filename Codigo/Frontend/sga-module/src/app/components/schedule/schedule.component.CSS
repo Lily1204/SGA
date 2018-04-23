@@ -1,0 +1,16 @@
+h1 {
+	color:  red;
+	text-align: right;	
+}
+
+/*TABLE SCHEDULE*/
+
+.headerMain {
+	text-align: center;
+	font-size: 14px;	
+}
+
+.subjects {	
+	text-align: center;
+	vertical-align: middle;
+}

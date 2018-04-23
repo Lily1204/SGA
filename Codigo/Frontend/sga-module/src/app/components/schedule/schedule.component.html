@@ -1,1 +1,131 @@
-schedule
+<!--https://gist.github.com/donnierayjones/6fd9802d992b2d8d6cfd-->
+<div id="container-schedule" class="container">
+	
+	<h1 class="title">
+		MI HORARIO 		
+	</h1>
+
+	<div class="student-data">
+		<ul *ngFor="let data of dataStudent">
+			<li>Fecha:  {{data.date}}</li>
+			<li>Nombre: {{data.name}}</li>
+			<li>Ingenieria:  {{data.career}}</li>
+			<li>Semestre:  {{data.semester}}</li>
+		</ul>
+	</div>
+
+	<!--HORARIO-->
+
+		´<table id="schedule" class="table table-striped">
+
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col" class="headerMain">MATERIA</th>
+					<th scope="col" class="headerMain">LUNES</th>
+					<th scope="col" class="headerMain">MARTES</th>
+					<th scope="col" class="headerMain">MIERCOLES</th>
+					<th scope="col" class="headerMain">JUEVES</th>
+					<th scope="col" class="headerMain">VIERNES</th>
+				</tr>	
+			</thead>		
+
+			<tbody class="table">				
+				<tr><!--Crea una fila-->
+					<th>
+						<table>
+							<thead class="headerTable">
+								<tr>
+									<th>-</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="subjects" *ngFor="let sub of mySchedule">{{sub.subject}}</tr>											
+							</tbody>
+						</table>
+					</th>					
+					<th><!--Crea una columna-->
+						<table>
+							<thead class="headerTable">
+								<tr>
+									<th scope="col">Hora</th>
+									<th scope="col">Salon</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let sub of mySchedule">
+									<td>{{sub.hour}}</td>
+									<td>{{sub.salons.monday}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</th>
+					<th>
+						<table>
+							<thead class="headerTable">
+								<tr>
+									<th scope="col">Hora</th>
+									<th scope="col">Salon</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let sub of mySchedule">
+									<td>{{sub.hour}}</td>
+									<td>{{sub.salons.tuesday}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</th>
+					<th>
+						<table>
+							<thead class="headerTable">
+								<tr>
+									<th scope="col">Hora</th>
+									<th scope="col">Salon</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let sub of mySchedule">
+									<td>{{sub.hour}}</td>
+									<td>{{sub.salons.wednesday}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</th>
+					<th>
+						<table>
+							<thead class="headerTable">
+								<tr>
+									<th scope="col">Hora</th>
+									<th scope="col">Salon</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let sub of mySchedule">
+									<td>{{sub.hour}}</td>
+									<td>{{sub.salons.thursday}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</th>
+					<th>
+						<table>
+							<thead class="headerTable">
+								<tr>
+									<th scope="col">Hora</th>
+									<th scope="col">Salon</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let sub of mySchedule">
+									<td>{{sub.hour}}</td>
+									<td>{{sub.salons.friday}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</th>
+				</tr>
+			</tbody>
+
+		</table>
+
+</div>

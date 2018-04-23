@@ -7,6 +7,8 @@ import {  MatButtonModule  } from '@angular/material/button';
 
 import {ReportCardComponent} from './report-card.component';
 
+import {MatButtonModule, MatTableModule} from '@angular/material';
+
 @NgModule({
   declarations: [
     ReportCardComponent

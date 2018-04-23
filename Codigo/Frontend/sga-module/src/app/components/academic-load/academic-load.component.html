@@ -1,16 +1,16 @@
 <div class="text-center">
-  <h5>Creditos Disponibles: {{availableCredits}}</h5>
-  <h6>Minimo de Creditos para inscribirte: {{minorCredits}}</h6>
-  <div class="progress m-2">
-    <div class="progress-bar progress-bar-striped progress-bar-animated"
-         [style.width.%]="(100/availableCredits)*selectedCredits"></div>
-  </div>
-  <app-academic-load-form [subjectsInSemester]="subjectsInSemester"
-                          (valueChanges)="onValueChanges($event)"></app-academic-load-form>
-  <div class="my-2">
-    <button (click)="onSendAcademicLoad()" class="btn btn-primary">Enviar Carga Academica</button>
-    <div class="fa-pull-right">
-      <button (click)="onPrintAcademicLoad()" class="btn btn-outline-secondary">Imprimir</button>
+    <h5>Creditos Disponibles: {{availableCredits}}</h5>
+    <h6>Minimo de Creditos para inscribirte: {{minorCredits}}</h6>
+    <div class="progress m-2">
+        <div class="progress-bar progress-bar-striped progress-bar-animated"
+             [style.width.%]="(100/availableCredits)*selectedCredits"></div>
     </div>
-  </div>
+    <app-academic-load-form [subjectsInSemester]="subjectsInSemester"
+                            (valueChanges)="onValueChanges($event)"></app-academic-load-form>
+    <div class="my-2">
+        <button (click)="onSendAcademicLoad()" class="btn btn-primary">Enviar Carga Academica</button>
+        <div class="fa-pull-right">
+            <button (click)="onPrintAcademicLoad()" class="btn btn-outline-secondary">Imprimir</button>
+        </div>
+    </div>
 </div>

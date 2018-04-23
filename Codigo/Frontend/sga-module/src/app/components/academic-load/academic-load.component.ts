@@ -21,8 +21,8 @@ import {Subscription} from 'rxjs/Subscription';
  * templateUrl = Indica la ubicacion de la template de html para el componente
  * */
 @Component({
-  selector: 'app-academic-load',
-  templateUrl: './academic-load.component.html'
+    selector: 'app-academic-load',
+    templateUrl: './academic-load.component.html'
 })
 /**
  * Clase AcademicLoadComponent que implementa las interfaces OnInit y
@@ -31,134 +31,134 @@ import {Subscription} from 'rxjs/Subscription';
  * */
 export class AcademicLoadComponent implements OnInit, OnDestroy {
 
-  /**
-   * Variable para almacenar en memoria
-   * el cardex del alumno
-   * */
-  subjectsInSemester: any;
-
-  /**
-   * Variable para almacenar los
-   * creditos disponibles para el alumno
-   * */
-  availableCredits: number;
-
-  /**
-   * Variable para almacenar la cantidad
-   * minima de creditos a seleccionar
-   * para que el sistema permita terminar
-   * la carga
-   * */
-  minorCredits: number;
-
-  /**
-   * Variable para almacenar los creditos
-   * seleccionados
-   * */
-  selectedCredits: number;
-
-  /**
-   * Variable para almacenar las materias
-   * seleccionadas
-   * */
-  selectedSubjects: any[];
-
-  /**
-   * Variable para almacenar todas las subscripciones
-   * */
-  subscriptions: Subscription;
-
-  /**
-   * Constructor de la clase
-   * */
-  constructor(private studentService: StudentService) {
     /**
-     * Inicializacion del objeto
+     * Variable para almacenar en memoria
+     * el cardex del alumno
      * */
-    this.subscriptions = new Subscription();
+    subjectsInSemester: any;
+
     /**
-     * Inicializacion de las variables
-     * en 0 para que no provoquen errores por undefined
+     * Variable para almacenar los
+     * creditos disponibles para el alumno
      * */
-    this.availableCredits = 35;
+    availableCredits: number;
 
-    this.minorCredits = 22;
-
-    this.selectedCredits = 0;
-
-    this.selectedSubjects = [];
-  }
-
-  /**
-   * Metodo implementado por la interfaz OnInit
-   * */
-  ngOnInit(): void {
     /**
-     * Se añade una subscripcion
+     * Variable para almacenar la cantidad
+     * minima de creditos a seleccionar
+     * para que el sistema permita terminar
+     * la carga
      * */
-    this.subscriptions.add(
-      /**
-       * Llamada al servicio "subjectsInSemester" el cual
-       * pide el cardex del alumno
-       * */
-      this.studentService.subjectsInSemester().subscribe(subjects => {
+    minorCredits: number;
+
+    /**
+     * Variable para almacenar los creditos
+     * seleccionados
+     * */
+    selectedCredits: number;
+
+    /**
+     * Variable para almacenar las materias
+     * seleccionadas
+     * */
+    selectedSubjects: any[];
+
+    /**
+     * Variable para almacenar todas las subscripciones
+     * */
+    subscriptions: Subscription;
+
+    /**
+     * Constructor de la clase
+     * */
+    constructor(private studentService: StudentService) {
         /**
-         * Asignacion del arreglo de materias
-         * por semestre
+         * Inicializacion del objeto
          * */
-        this.subjectsInSemester = subjects;
-      }));
-  }
+        this.subscriptions = new Subscription();
+        /**
+         * Inicializacion de las variables
+         * en 0 para que no provoquen errores por undefined
+         * */
+        this.availableCredits = 35;
 
-  /**
-   * Metodo implementado por la interfaz OnDestroy
-   * */
-  ngOnDestroy(): void {
-    /**
-     * Llamada al metodo unsubscribe que desuscribe
-     * todas las subscripciones añadidas
-     */
-    this.subscriptions.unsubscribe();
-  }
+        this.minorCredits = 22;
 
-  /**
-   * Metodo que escucha el estado del formulario
-   * de materias
-   * */
-  onValueChanges(value) {
+        this.selectedCredits = 0;
+
+        this.selectedSubjects = [];
+    }
+
     /**
-     * Asigna el estado del formulario a la
-     * variable local
+     * Metodo implementado por la interfaz OnInit
      * */
-    this.selectedSubjects = value;
-    /**
-     * Pone en "0" el contador
-     * de creditos seleccionados
-     * */
-    this.selectedCredits = 0;
-    /**
-     * A traves de una funcion forEach
-     * se iteran todos los elementos
-     * para sumar el valor de cada elemento
-     * */
-    this.selectedSubjects.forEach((item) => this.selectedCredits += item.credits);
-  }
+    ngOnInit(): void {
+        /**
+         * Se añade una subscripcion
+         * */
+        this.subscriptions.add(
+            /**
+             * Llamada al servicio "subjectsInSemester" el cual
+             * pide el cardex del alumno
+             * */
+            this.studentService.subjectsInSemester().subscribe(subjects => {
+                /**
+                 * Asignacion del arreglo de materias
+                 * por semestre
+                 * */
+                this.subjectsInSemester = subjects;
+            }));
+    }
 
-  /**
-   * Metodo que escucha la
-   * interaccion del usuario
-   * con el boton de enviar
-   * carga academica
-   * */
-  onSendAcademicLoad() {
-  }
+    /**
+     * Metodo implementado por la interfaz OnDestroy
+     * */
+    ngOnDestroy(): void {
+        /**
+         * Llamada al metodo unsubscribe que desuscribe
+         * todas las subscripciones añadidas
+         */
+        this.subscriptions.unsubscribe();
+    }
 
-  /**
-   * Metodo que escucha la
-   * interaccion del usuario
-   * con el boton de imprimir
-   * carga academic
-   * */
-  onPrintAcademicLoad() {
-  }
+    /**
+     * Metodo que escucha el estado del formulario
+     * de materias
+     * */
+    onValueChanges(value) {
+        /**
+         * Asigna el estado del formulario a la
+         * variable local
+         * */
+        this.selectedSubjects = value;
+        /**
+         * Pone en "0" el contador
+         * de creditos seleccionados
+         * */
+        this.selectedCredits = 0;
+        /**
+         * A traves de una funcion forEach
+         * se iteran todos los elementos
+         * para sumar el valor de cada elemento
+         * */
+        this.selectedSubjects.forEach((item) => this.selectedCredits += item.credits);
+    }
+
+    /**
+     * Metodo que escucha la
+     * interaccion del usuario
+     * con el boton de enviar
+     * carga academica
+     * */
+    onSendAcademicLoad() {
+    }
+
+    /**
+     * Metodo que escucha la
+     * interaccion del usuario
+     * con el boton de imprimir
+     * carga academic
+     * */
+    onPrintAcademicLoad() {
+    }
 }

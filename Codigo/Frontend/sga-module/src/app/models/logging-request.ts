@@ -1,4 +1,4 @@
 export interface LoggingRequest {
-  user: number;
-  password: string;
+    user: number;
+    password: string;
 }

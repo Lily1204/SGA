@@ -1,10 +1,13 @@
 <!--https://gist.github.com/donnierayjones/6fd9802d992b2d8d6cfd-->
 <div id="container-schedule" class="container">
 	
+	<!--Titulo de la vista-->
 	<h1 class="title">
-		MI HORARIO 		
+		MI HORARIO
 	</h1>
 
+	<!--Datos del estudiante a mostrar. Esta contiene una lista ordenada 
+		en donde itera los datos para mostrarlos-->
 	<div class="student-data">
 		<ul *ngFor="let data of dataStudent">
 			<li>Fecha:  {{data.date}}</li>
@@ -14,10 +17,15 @@
 		</ul>
 	</div>
 
-	<!--HORARIO-->
-
+	<!--Clase: table
+		Descripcion: Elemento de tipo tabla que almacenara los datos del
+			horario que posea el alumno, como son: 
+				Materia, hora y salon 
+			Dentro contiene subelementos como son otras tablas.	
+				-->
+	
 		´<table id="schedule" class="table table-striped">
-
+			<!--Encabezado de la tabla en donde muestra los dias de la semana-->
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col" class="headerMain">MATERIA</th>
@@ -29,8 +37,10 @@
 				</tr>	
 			</thead>		
 
-			<tbody class="table">				
-				<tr><!--Crea una fila-->
+			<!--Cuerpo de la tabla en donde contiene las subtablas-->
+			<tbody class="table">								
+				<tr><!--Crea una fila y dentro contiene una tabla´para iterar 
+					nombres de las materias e ir generando filas-->
 					<th>
 						<table>
 							<thead class="headerTable">
@@ -42,8 +52,11 @@
 								<tr class="subjects" *ngFor="let sub of mySchedule">{{sub.subject}}</tr>											
 							</tbody>
 						</table>
-					</th>					
-					<th><!--Crea una columna-->
+					</th>	
+					<!--Crea una fila y dentro contiene una tabla´para iterar 
+					hora y salon asignado a cada materia respectivamente, generando filas en 
+					automatico.-->
+					<th>						
 						<table>
 							<thead class="headerTable">
 								<tr>
@@ -127,5 +140,7 @@
 			</tbody>
 
 		</table>
+
+		<button type="button" class="btn btn-primary btn-sm">Imprimir</button>
 
 </div>

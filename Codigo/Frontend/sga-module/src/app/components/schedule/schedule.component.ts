@@ -13,6 +13,10 @@ export class ScheduleComponent {
 	/*
 		dataStudent: variable que almacena un objeto JSON
 		con los datos del alumno.
+			date	--> Fecha en que salio la boleta
+			name	--> Nombre cmpleto del estudiante
+			career 	--> Nombre de la ingenieria que lleva
+			semester--> Semestre que curso
 	 */
 	dataStudent:any = [{
 		date: '10/06/2018',
@@ -25,7 +29,12 @@ export class ScheduleComponent {
 	/*
 		mySchedule: variable que almacena un array de objetos
 		con las materias y sus respectivas horas y salones asignadas 
-		a cada una de estas.
+		a cada una de estas.Dentro del array tendra un objeto con los 
+		datos de 
+			subject --> Almacena el nombre de la materia
+			hout	--> Hora en la que esta se imparte
+			salons	--> Almacena un subarray con los salones asignadas en cada dia de la 
+						semana
 	 */
 	mySchedule:any = [
 		{

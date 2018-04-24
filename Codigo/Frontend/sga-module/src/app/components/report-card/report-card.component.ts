@@ -15,7 +15,7 @@ export class ReportCardComponent {
     // Nombre de las columnas para la tabla
     displayedColumns = ['id', 'subject', 'score', 'credits'];
   
-    // Datos que llenara la tabla en su respectiva columna
+    // Datos de cada mataeria que llenara la tabla en su respectiva columna
     dataSource: any = [
       { id: 1, subject: 'Lenguajes y Automatas 1', score: 90, credits: 5 },
       { id: 2, subject: 'Ingenieria de software', score: 100, credits: 5 },

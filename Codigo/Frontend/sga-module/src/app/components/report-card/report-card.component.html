@@ -1,8 +1,14 @@
+<!--Clase: Container
+	Descripción: Contenedor de la vista boleta-->
+
 <div id="container">
     
+    <!--Titulo dentro de la pagina-->
     <h2>BOLETA</h2>
 
-	<div class="dataStudent">
+	<!--Clase: dataStudent
+		Descripción: Contenedor que almacera una lista ordenada con los datos del alumno-->
+	<div class="dataStudent">		
 		<ul *ngFor="let item of student" class="data">			
 			<li class="date">Fecha: {{item.date}}</li>			
 			<li>Nombre: {{item.name}}</li>
@@ -12,10 +18,15 @@
 		</ul>
 	</div>
 
-<!--MATERIAL DESIGN-->
+	<!--Clase: lesson-table
+		Descripción: Tabla que muestra datos de la materia como son su 
+				id, nombre, calificacion y creditos
+			Dentro de este contenedor tiene subcontenedores que guardaran los 
+			datos a mostrar en la boleta-->
 
 	<mat-table class="lesson-table mat-elevation-z8" [dataSource]="dataSource">
 		
+		<!--Subcontenedor que almacena titulo de la columna y datos-->
 		<ng-container matColumnDef="id">
 			<mat-header-cell *matHeaderCellDef>ID</mat-header-cell>			
 			<mat-cell *matCellDef="let lesson">{{lesson.id}}</mat-cell>
@@ -42,8 +53,9 @@
 	</mat-table>
 
 
-	<p>Firma electronica: {{signature}}</p>
-	<button mat-raised-button color="primary">Imprimir</button>
+	<!--Clase: bnt-print
+		Descripcion: Elemento de tipo boton que tendra la funcion de imprimir la boleta del alumno-->
+	<button mat-raised-button color="primary" class="btn-print">Imprimir</button>
 
 
 </div>

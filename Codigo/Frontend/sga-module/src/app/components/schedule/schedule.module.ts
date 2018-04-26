@@ -13,8 +13,8 @@ import {ScheduleComponent} from './schedule.component';
     ScheduleComponent
   ],
   imports: [
-  	CommonModule,
-  	MatTableModule,
+  	CommonModule,//Importacion de CommonModule
+  	MatTableModule,//Importacion de MatTableModule
     RouterModule.forChild([{path: '', component: ScheduleComponent}])
   ],
   exports: [

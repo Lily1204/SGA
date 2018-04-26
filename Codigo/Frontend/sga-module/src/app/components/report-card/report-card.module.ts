@@ -16,9 +16,9 @@ import {ReportCardComponent} from './report-card.component';
     ReportCardComponent
   ],
   imports: [
-    CommonModule,
-    MatTableModule,
-    MatButtonModule,
+    CommonModule,//Importacion de CommonModule
+    MatTableModule,//Importacion de MatTableModule
+    MatButtonModule,//Importacion de MatButtonModule
     RouterModule.forChild([{path: '', component: ReportCardComponent}])
   ],
   exports: [

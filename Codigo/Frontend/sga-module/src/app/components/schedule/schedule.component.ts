@@ -18,21 +18,21 @@ export class ScheduleComponent {
 			career 	--> Nombre de la ingenieria que lleva
 			semester--> Semestre que curso
 	 */
-	dataStudent:any = [{
+	dataStudent:any = {
 		date: '10/06/2018',
 		name: 'Damian Zamora Celiseo',
 		career: 'Sistemas Computacionales',
 		semester: 6
-	}]
+	}
 
 
 	/*
 		mySchedule: variable que almacena un array de objetos
-		con las materias y sus respectivas horas y salones asignadas 
-		a cada una de estas.Dentro del array tendra un objeto con los 
+		con las materias y sus respectivas horas y un subarray de salones asignados 
+		a cada una de estas. Dentro del array tendra un objeto con los 
 		datos de 
 			subject --> Almacena el nombre de la materia
-			hout	--> Hora en la que esta se imparte
+			hour	--> Hora en la que esta se imparte
 			salons	--> Almacena un subarray con los salones asignadas en cada dia de la 
 						semana
 	 */

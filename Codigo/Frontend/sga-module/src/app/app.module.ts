@@ -16,26 +16,19 @@ import {HttpClientModule} from '@angular/common/http';
 /**
  * Herramientas a utilizar de Angular material
  * */
-import {MatTableModule} from '@angular/material/table';
-import {MatButtonModule} from '@angular/material/button';
-
 /**
  * Componente de App
  * */
 import {AppComponent} from './app.component';
-
 /**
  * Archivo de rutas
  */
 import {routes} from './app.routes';
-
 /**
  * Servicios utilizados por la app
  */
 import {AuthGuardService} from './services/auth-guard.service';
 import {StudentService} from './services/student.service';
-
-import * as $ from 'jquery';
 import {StoreModule} from '@ngrx/store';
 
 /**

@@ -17,8 +17,8 @@ import {Subject} from '../../../../models/subject';
  * templateUrl = Indica la ubicacion de la template de html para el componente
  * */
 @Component({
-    selector: 'app-academic-load-item',
-    templateUrl: './academic-load-item.component.html'
+  selector: 'app-academic-load-item',
+  templateUrl: './academic-load-item.component.html'
 })
 /**
  * Clase AcademicLoadItemComponent que implementa
@@ -27,54 +27,54 @@ import {Subject} from '../../../../models/subject';
  * */
 export class AcademicLoadItemComponent implements OnInit {
 
-    @Input() subject: Subject;
+  @Input() subject: Subject;
 
-    _selectedItem: boolean;
+  _selectedItem: boolean;
 
-    _disabled: boolean;
+  _disabled: boolean;
 
-    @Output() selectedItem: EventEmitter<any>;
+  @Output() selectedItem: EventEmitter<any>;
 
+  /**
+   * Constructor de la clase
+   * */
+  constructor() {
     /**
-     * Constructor de la clase
+     * Inicializacion del objecto
      * */
-    constructor() {
-        /**
-         * Inicializacion del objecto
-         * */
-        this.selectedItem = new EventEmitter<any>();
-    }
+    this.selectedItem = new EventEmitter<any>();
+  }
 
+  /**
+   * Metodo implementado por la interfaz OnInit
+   * */
+  ngOnInit() {
     /**
-     * Metodo implementado por la interfaz OnInit
+     * Deshabilita la seleccion
+     * del elemento segun los
+     * valores de la materia
      * */
-    ngOnInit() {
-        /**
-         * Deshabilita la seleccion
-         * del elemento segun los
-         * valores de la materia
-         * */
-        this._disabled = this.subject.qualification && this.subject.qualification >= 70;
-    }
+    this._disabled = this.subject.qualification && this.subject.qualification >= 70;
+  }
 
-    /**
-     * Metodo que escucha la
-     * iteracion del usuario
-     * con el componente
-     * */
-    onSelectedItem() {
-        if (!this._disabled) {
-            /**
-             * Si el componente no esta
-             * deshabilitado cambia el
-             * valor de la variable
-             * "selectedItem" a lo contrario
-             * de su valor actual y emite un
-             * evento con la informacion del
-             * componente
-             * */
-            this._selectedItem = !this._selectedItem;
-            this.selectedItem.emit({selected: this._selectedItem, subject: this.subject});
-        }
+  /**
+   * Metodo que escucha la
+   * iteracion del usuario
+   * con el componente
+   * */
+  onSelectedItem() {
+    if (!this._disabled) {
+      /**
+       * Si el componente no esta
+       * deshabilitado cambia el
+       * valor de la variable
+       * "selectedItem" a lo contrario
+       * de su valor actual y emite un
+       * evento con la informacion del
+       * componente
+       * */
+      this._selectedItem = !this._selectedItem;
+      this.selectedItem.emit({selected: this._selectedItem, subject: this.subject});
     }
+  }
 }

@@ -24,16 +24,16 @@ import {AcademicLoadItemModule} from './academic-load-item/academic-load-item.mo
  * el uso en otros modulos
  * */
 @NgModule({
-    declarations: [
-        AcademicLoadFormComponent
-    ],
-    imports: [
-        AcademicLoadItemModule,
-        CommonModule
-    ],
-    exports: [
-        AcademicLoadFormComponent
-    ]
+  declarations: [
+    AcademicLoadFormComponent
+  ],
+  imports: [
+    AcademicLoadItemModule,
+    CommonModule
+  ],
+  exports: [
+    AcademicLoadFormComponent
+  ]
 })
 /**
  * Clase del modulo de Academic Load Form

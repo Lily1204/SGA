@@ -29,17 +29,17 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
  * el uso en otros modulos
  * */
 @NgModule({
-    declarations: [
-        LayoutComponent
-    ],
-    imports: [
-        RouterModule.forChild(routes),
-        FontAwesomeModule,
-        CommonModule
-    ],
-    exports: [
-        LayoutComponent
-    ]
+  declarations: [
+    LayoutComponent
+  ],
+  imports: [
+    RouterModule.forChild(routes),
+    FontAwesomeModule,
+    CommonModule
+  ],
+  exports: [
+    LayoutComponent
+  ]
 })
 /**
  * Clase del modulo de Layout

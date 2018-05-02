@@ -19,9 +19,9 @@ import 'rxjs/operators/filter';
  * del componente
  * */
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 /**
  * Clase AppComponent

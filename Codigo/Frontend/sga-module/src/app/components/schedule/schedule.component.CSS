@@ -1,9 +1,10 @@
+/*Estilo del titulo de la vista*/
 h1 {
 	color:  red;
 	text-align: right;	
 }
 
-/*TABLE SCHEDULE*/
+/*Estilo para Table*/
 
 .headerMain {
 	text-align: center;
@@ -13,4 +14,11 @@ h1 {
 .subjects {	
 	text-align: center;
 	vertical-align: middle;
+}
+
+/*Estilo para Button */
+
+.btns{
+	background-color: red;
+	font-size: 14px;	
 }

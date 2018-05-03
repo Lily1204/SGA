@@ -1,33 +1,33 @@
 <div class="container">
-  <div class="img-container">
-    <img id="logging-background" class="logging-background" src="../../../assets/images/common/ito.jpg"
-         alt="background"/>
-  </div>
-  <div class="row justify-content-end">
-    <div class="col col-lg-4 p-0 m-2 my-lg-5 text-right card">
-      <div class="card-body">
-        <form [formGroup]="form">
-          <div class="form-group">
-            <label for="controlNumber">Numero de Control</label>
-            <input formControlName="controlNumber" name="controlNumber" id="controlNumber"
-                   class="form-control" placeholder="14011345" minlength="8" maxlength="8" onlyNumbers>
-          </div>
-          <div class="form-group">
-            <label for="password">Contraseña</label>
-            <input formControlName="password" name="password" id="password" class="form-control"
-                   placeholder="password"
-                   type="password">
-          </div>
-        </form>
-      </div>
-      <div class="card-footer">
-        <button [disabled]="form.invalid" (click)="onClickLoggingButton()" class="btn btn-outline-primary">
-          <span *ngIf="!loading; else loader">Iniciar Seción</span>
-          <ng-template #loader>
-            <fa-icon [icon]="loadIcon" [spin]="true"></fa-icon>
-          </ng-template>
-        </button>
-      </div>
+    <div class="img-container">
+        <img id="logging-background" class="logging-background" src="../../../assets/images/common/ito.jpg"
+             alt="background"/>
     </div>
-  </div>
+    <div class="row justify-content-end">
+        <div class="col col-lg-4 p-0 m-2 my-lg-5 text-right card">
+            <div class="card-body">
+                <form [formGroup]="form">
+                    <div class="form-group">
+                        <label for="controlNumber">Numero de Control</label>
+                        <input formControlName="controlNumber" name="controlNumber" id="controlNumber"
+                               class="form-control" placeholder="14011345" minlength="8" maxlength="8" onlyNumbers>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input formControlName="password" name="password" id="password" class="form-control"
+                               placeholder="password"
+                               type="password">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button [disabled]="form.invalid" (click)="onClickLoggingButton()" class="btn btn-outline-primary">
+                    <span *ngIf="!loading; else loader">Iniciar Seción</span>
+                    <ng-template #loader>
+                        <fa-icon [icon]="loadIcon" [spin]="true"></fa-icon>
+                    </ng-template>
+                </button>
+            </div>
+        </div>
+    </div>
 </div>

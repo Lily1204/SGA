@@ -39,21 +39,21 @@ import {StoreModule} from '@ngrx/store';
  * bootstrap = Declara el cargador de la app
  * */
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    RouterModule.forRoot(routes, {useHash: true}),
-    StoreModule.forRoot({})
-  ],
-  providers: [
-    AuthGuardService,
-    StudentService
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        RouterModule.forRoot(routes, {useHash: true}),
+        StoreModule.forRoot({})
+    ],
+    providers: [
+        AuthGuardService,
+        StudentService
+    ],
+    bootstrap: [AppComponent]
 })
 /**
  * Clase del modulo de la aplicacion

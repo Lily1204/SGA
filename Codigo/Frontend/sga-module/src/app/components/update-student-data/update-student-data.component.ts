@@ -1,8 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 import {KinshipEnum} from '../../models/kinship.enum';
 import {Subscription} from 'rxjs/Subscription';
+import {ToastsManager} from 'ng2-toastr';
 
 @Component({
     selector: 'app-update-student-data',
@@ -20,7 +21,10 @@ export class UpdateStudentDataComponent implements OnInit, OnDestroy {
 
     subscriptions: Subscription;
 
-    constructor(formBuilder: FormBuilder) {
+    isUpdatingStudentData: boolean;
+
+    constructor(formBuilder: FormBuilder,
+                private toastManager: ToastsManager, vcr: ViewContainerRef) {
         this.generalDataForm = formBuilder.group({
             name: ['', Validators.required],
             middleName: [''],
@@ -56,6 +60,8 @@ export class UpdateStudentDataComponent implements OnInit, OnDestroy {
         });
 
         this.subscriptions = new Subscription();
+
+        this.toastManager.setRootViewContainerRef(vcr);
     }
 
     ngOnInit(): void {
@@ -72,5 +78,17 @@ export class UpdateStudentDataComponent implements OnInit, OnDestroy {
 
     ngOnDestroy(): void {
         this.subscriptions.unsubscribe();
+    }
+
+    onUpdateStudentData(): void {
+        this.isUpdatingStudentData = true;
+        setTimeout(() => {
+            this.toastManager.success('Datos de alumnos actualizados con exito');
+            this.isUpdatingStudentData = false;
+        }, 1000);
+    }
+
+    onPrintStudentData() {
+        window.print();
     }
 }

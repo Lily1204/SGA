@@ -20,15 +20,15 @@ import {AcademicLoadItemComponent} from './academic-load-item.component';
  * el uso en otros modulos
  * */
 @NgModule({
-  declarations: [
-    AcademicLoadItemComponent
-  ],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    AcademicLoadItemComponent
-  ]
+    declarations: [
+        AcademicLoadItemComponent
+    ],
+    imports: [
+        CommonModule
+    ],
+    exports: [
+        AcademicLoadItemComponent
+    ]
 })
 /**
  * Clase del modulo de Academic Load Form

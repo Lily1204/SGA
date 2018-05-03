@@ -30,21 +30,21 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
  * el uso en otros modulos
  * */
 @NgModule({
-  declarations: [
-    LoginComponent
-  ],
-  imports: [
-    RouterModule.forChild([{
-      path: '', component: LoginComponent
-    }]),
-    TrackingImageHoverModule,
-    ReactiveFormsModule,
-    CommonModule,
-    FontAwesomeModule
-  ],
-  exports: [
-    LoginComponent
-  ]
+    declarations: [
+        LoginComponent
+    ],
+    imports: [
+        RouterModule.forChild([{
+            path: '', component: LoginComponent
+        }]),
+        TrackingImageHoverModule,
+        ReactiveFormsModule,
+        CommonModule,
+        FontAwesomeModule
+    ],
+    exports: [
+        LoginComponent
+    ]
 })
 /**
  * Clase del modulo de Login

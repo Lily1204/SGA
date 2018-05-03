@@ -1,92 +1,83 @@
-
 <!--Clase: Container
 	Descripción: Contenedor de la vista boleta-->
 
 <div class="container-report-card">
-    
+
     <!--Titulo dentro de la pagina-->
     <!--<h2>BOLETA</h2>-->
 
-	<!--Clase: dataStudent
-		Descripción: Contenedor que almacera una lista ordenada con los datos del alumno-->
-	<div class="dataStudent">
-		<!--Etiqueta UL : Ayudara a ordenar los datos mostrados en la vista
-			Directiva ngFor : Ciclo de tipo forEach para iterar el objeto JSON con los datos del alumno
-			variable item : Servira como apuntador para ir iterando el objeto-->		
-		<ul *ngFor="let item of student" class="data">			
-			<!--Etiqueta LI : Ayudara a desplegar en un item de la lista la informacion
-				Interpolacion : Mostrara los datos iterados del objeto-->
-			<li class="date">Fecha: {{item.date}}</li>			
-			<li>Nombre: {{item.name}}</li>
-			<li>Carrera: {{item.career}}</li>
-			<li>Creditos cursados: {{item.progress}}</li>			
-			<li class="average">Promedio del semestre: {{item.qualification}}</li>
-		</ul>
-	</div>
+    <!--Clase: dataStudent
+        Descripción: Contenedor que almacera una lista ordenada con los datos del alumno-->
+    <div class="dataStudent">
+        <!--Etiqueta UL : Ayudara a ordenar los datos mostrados en la vista
+            Directiva ngFor : Ciclo de tipo forEach para iterar el objeto JSON con los datos del alumno
+            variable item : Servira como apuntador para ir iterando el objeto-->
+        <ul *ngFor="let item of student" class="data">
+            <!--Etiqueta LI : Ayudara a desplegar en un item de la lista la informacion
+                Interpolacion : Mostrara los datos iterados del objeto-->
+            <li class="date">Fecha: {{item.date}}</li>
+            <li>Nombre: {{item.name}}</li>
+            <li>Carrera: {{item.career}}</li>
+            <li>Creditos cursados: {{item.progress}}</li>
+            <li class="average">Promedio del semestre: {{item.qualification}}</li>
+        </ul>
+    </div>
 
-	<!--Clase: lesson-table
-		Descripción: Tabla que muestra datos de la materia como son su 
-			id, nombre, calificacion y creditos
-		Dentro de este contenedor tiene subcontenedores que guardaran los 
-		datos a mostrar en la boleta
-		[dataSouce] : Selecciona el objeto que contiene la informacion a mostrar en la tabla-->
+    <!--Clase: lesson-table
+        Descripción: Tabla que muestra datos de la materia como son su
+            id, nombre, calificacion y creditos
+        Dentro de este contenedor tiene subcontenedores que guardaran los
+        datos a mostrar en la boleta
+        [dataSouce] : Selecciona el objeto que contiene la informacion a mostrar en la tabla-->
 
-	<!--Etiqueta utilizas para la tabla pertenecen al modulo importado MatTableModule 
-		de AngularMaterial-->
+    <!--Etiqueta utilizas para la tabla pertenecen al modulo importado MatTableModule
+        de AngularMaterial-->
 
-	<mat-table class="lesson-table mat-elevation-z8" [dataSource]="dataSource">
-		
-		<!--Subcontenedor que almacena titulo de la columna y datos
-			directiva matColumnDef : Asigna un nombre al contenedor-->
-		<ng-container matColumnDef="id">
-			<!--Etiqueta para colocar el nombre de la columna dentro de la tabla
-				directiva matHeaderCellDef que indica que es una cabecera-->
-			<mat-header-cell *matHeaderCellDef>ID</mat-header-cell>			
-			<!--Etiqueta para crear la celda con la informacion deseada
-				directiva matCellDef : ayuda a declarar la variable que servira como apuntador
-				para iterar el dataSource
-				Interpolacion : Coloca la informacion iterada en eldataSource-->
-			<mat-cell *matCellDef="let lesson">{{lesson.id}}</mat-cell>
-		</ng-container>
+    <mat-table class="lesson-table mat-elevation-z8" [dataSource]="dataSource">
 
+        <!--Subcontenedor que almacena titulo de la columna y datos
+            directiva matColumnDef : Asigna un nombre al contenedor-->
+        <ng-container matColumnDef="id">
+            <!--Etiqueta para colocar el nombre de la columna dentro de la tabla
+                directiva matHeaderCellDef que indica que es una cabecera-->
+            <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+            <!--Etiqueta para crear la celda con la informacion deseada
+                directiva matCellDef : ayuda a declarar la variable que servira como apuntador
+                para iterar el dataSource
+                Interpolacion : Coloca la informacion iterada en eldataSource-->
+            <mat-cell *matCellDef="let lesson">{{lesson.id}}</mat-cell>
+        </ng-container>
 
-  <mat-table class="lesson-table mat-elevation-z8" [dataSource]="dataSource">
+        <ng-container matColumnDef="subject">
+            <mat-header-cell *matHeaderCellDef>MATERIA</mat-header-cell>
+            <mat-cell *matCellDef="let lesson">{{lesson.subject}}</mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-      <mat-cell *matCellDef="let lesson">{{lesson.id}}</mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="score">
+            <mat-header-cell *matHeaderCellDef>CALIFICACION</mat-header-cell>
+            <mat-cell *matCellDef="let lesson">{{lesson.score}}</mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="subject">
-      <mat-header-cell *matHeaderCellDef>MATERIA</mat-header-cell>
-      <mat-cell *matCellDef="let lesson">{{lesson.subject}}</mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="credits">
+            <mat-header-cell *matHeaderCellDef>CREDITOS</mat-header-cell>
+            <mat-cell *matCellDef="let lesson">{{lesson.credits}}</mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="score">
-      <mat-header-cell *matHeaderCellDef>CALIFICACION</mat-header-cell>
-      <mat-cell *matCellDef="let lesson">{{lesson.score}}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="credits">
-      <mat-header-cell *matHeaderCellDef>CREDITOS</mat-header-cell>
-      <mat-cell *matCellDef="let lesson">{{lesson.credits}}</mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let myRowData; columns: displayedColumns"></mat-row>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let myRowData; columns: displayedColumns"></mat-row>
 
 
-	<!--Clase: bnt-print
-		Descripcion: Elemento de tipo boton que tendra la funcion de imprimir la boleta del alumno-->	
-	<button mat-raised-button color="primary" class="btn-print">Imprimir</button>
+        <!--Clase: bnt-print
+            Descripcion: Elemento de tipo boton que tendra la funcion de imprimir la boleta del alumno-->
+        <button mat-raised-button color="primary" class="btn-print">Imprimir</button>
 
-  </mat-table>
+    </mat-table>
 
 
-  <br/>
-  <p>Firma electronica: {{signature}}</p>
-  <div class="fa-pull-right">
-    <button mat-raised-button color="primary">Imprimir</button>
-  </div>
+    <br/>
+    <p>Firma electronica: {{signature}}</p>
+    <div class="fa-pull-right">
+        <button mat-raised-button color="primary" (click)="onPrintReportCard()">Imprimir</button>
+    </div>
 
 </div>

@@ -19,6 +19,7 @@ import {AcademicLoadFormModule} from './academic-load-form/academic-load-form.mo
  * Modulo de notificaciones
  * */
 import {ToastModule} from 'ng2-toastr';
+import {CommonModule} from '@angular/common';
 
 /**
  * Declaracion de modulo tomando las anotaciones de angular
@@ -28,17 +29,18 @@ import {ToastModule} from 'ng2-toastr';
  * el uso en otros modulos
  * */
 @NgModule({
-  declarations: [
-    AcademicLoadComponent
-  ],
-  imports: [
-    RouterModule.forChild([{path: '', component: AcademicLoadComponent}]),
-    AcademicLoadFormModule,
-    ToastModule.forRoot()
-  ],
-  exports: [
-    AcademicLoadComponent
-  ]
+    declarations: [
+        AcademicLoadComponent
+    ],
+    imports: [
+        RouterModule.forChild([{path: '', component: AcademicLoadComponent}]),
+        AcademicLoadFormModule,
+        ToastModule.forRoot(),
+        CommonModule
+    ],
+    exports: [
+        AcademicLoadComponent
+    ]
 })
 /**
  * Clase del modulo de Academic Load

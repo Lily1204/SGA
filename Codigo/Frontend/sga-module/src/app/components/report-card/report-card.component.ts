@@ -4,15 +4,20 @@ import {Component} from '@angular/core';
   selector: 'app-report-card',
   templateUrl: './report-card.component.html'
 })
+
+/*
+  Clase: ReportCardComponent
+  Descripcion: Contiene la logica y datos a mostrar en la vista html
+ */ 
 export class ReportCardComponent {
 
     // Datos del estudiante
     student:any = 
-      {  date: '04/06/2017',
+      [{  date: '04/06/2017',
          name: 'Damian Emerson Zamora Celiseo',
          career: 'Sistemas Computacionales', 
          progress: 65, 
-         qualification: 92};
+         qualification: 92}];
   
     // Datos que iran dentro del DataTable (nombres de la columnas)    
     displayedColumns:any = ['id', 'subject', 'score', 'credits'];

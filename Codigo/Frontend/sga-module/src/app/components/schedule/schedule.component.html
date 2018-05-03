@@ -1,10 +1,8 @@
 <!--https://gist.github.com/donnierayjones/6fd9802d992b2d8d6cfd-->
-<div id="container-schedule" class="container">
+<div id="Container" class="Container-Schedule">
 	
 	<!--Titulo de la vista-->
-	<h1 class="title">
-		MI HORARIO
-	</h1>
+	<!--<h1 class="title">MI HORARIO</h1>-->
 
 	<!--Datos del estudiante a mostrar. Esta contiene una lista ordenada 
 		en donde itera los datos para mostrarlos-->
@@ -16,8 +14,8 @@
 			<!--Etiquetas IL (Item de la lista) : Ayuda a mostrar un dato en concreto dentro de la lista
 				Uso de interpolacion {{ }} : Mostrar los datos iterados que estan guardados en el dataSource de component.ts-->
 			<li>Fecha:  {{data.date}}</li>
-			<li>Nombre: {{data.name}}</li>
-			<li>Ingenieria:  {{data.career}}</li>
+			<li>Nombre del alumno: {{data.name}}</li>
+			<li>Carrera:  {{data.career}}</li>
 			<li>Semestre:  {{data.semester}}</li>
 		</ul>
 	</div>
@@ -157,6 +155,6 @@
 		</table>
 
 		<!--Etiqueta BUTTON : Crea un boton con la funcionalidad de imprimir-->
-		<button type="button" class="btn btn-primary btn-sm">Imprimir</button>
+		<button type="button" class="btn btn-primary btn-sm" (click)="printSchedule()">Imprimir</button>
 
 </div>

@@ -6,7 +6,10 @@ import {Component} from '@angular/core';
   styleUrls: ['./schedule.component.css']
 })
 
-//Clase ScheduleComponent que contiene la logica de los datos
+/*
+	Clase ScheduleComponent
+	Descripcion: Contiene la logica y los datos a mostrar en la vista html
+*/
 
 export class ScheduleComponent {
 
@@ -18,12 +21,12 @@ export class ScheduleComponent {
 			career 	--> Nombre de la ingenieria que lleva
 			semester--> Semestre que curso
 	 */
-	dataStudent:any = {
+	dataStudent:any = [{
 		date: '10/06/2018',
 		name: 'Damian Zamora Celiseo',
 		career: 'Sistemas Computacionales',
 		semester: 6
-	}
+	}];
 
 
 	/*
@@ -72,11 +75,12 @@ export class ScheduleComponent {
 			hour: '16-17', 
 			salons:{monday:'06',tuesday:'06',wednesday:'06',thursday:'06',friday:'L7'}
 		},
-		
+	];
 
-	]
-
-	
-
+/*
+	function printSchedule(){
+		alert("Imprimiendo documento");
+	}
+*/
 
 }

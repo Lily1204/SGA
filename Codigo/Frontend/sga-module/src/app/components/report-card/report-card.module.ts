@@ -13,13 +13,13 @@ import {ReportCardComponent} from './report-card.component';
 
 @NgModule({
   declarations: [
-    ReportCardComponent
+    ReportCardComponent//Declarando nuestro componente 
   ],
   imports: [
     CommonModule,//Importacion de CommonModule
     MatTableModule,//Importacion de MatTableModule
     MatButtonModule,//Importacion de MatButtonModule
-    RouterModule.forChild([{path: '', component: ReportCardComponent}])
+    RouterModule.forChild([{path: '', component: ReportCardComponent}])//Enrutando vista 
   ],
   exports: [
     ReportCardComponent

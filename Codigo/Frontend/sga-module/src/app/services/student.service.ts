@@ -87,4 +87,12 @@ export class StudentService {
       setTimeout(() => observer.next(response), 500);
     });
   }
+
+  public studetData(): Observable<any> {
+    return this.http.get(``);
+  }
+
+  public studentReportCard(): Observable<any> {
+    return this.http.get(``);
+  }
 }

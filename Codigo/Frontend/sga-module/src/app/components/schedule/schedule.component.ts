@@ -6,6 +6,7 @@ import {Component} from '@angular/core';
   styleUrls: ['./schedule.component.css']
 })
 
+
 /*
 	Clase ScheduleComponent
 	Descripcion: Contiene la logica y los datos a mostrar en la vista html
@@ -76,6 +77,7 @@ export class ScheduleComponent {
 			salons:{monday:'06',tuesday:'06',wednesday:'06',thursday:'06',friday:'L7'}
 		},
 	];
+
 
 /*
 	function printSchedule(){

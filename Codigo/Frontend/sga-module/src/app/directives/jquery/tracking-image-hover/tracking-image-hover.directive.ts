@@ -1,4 +1,8 @@
 import {Directive, ElementRef, OnInit} from '@angular/core';
+/**
+ * Declaracion para el uso de jquery
+ */
+import * as $ from 'jquery';
 
 @Directive({
   selector: '[appTrackingImageHover]'

@@ -1,3 +1,4 @@
+
 <!--Clase: Container
 	Descripción: Contenedor de la vista boleta-->
 
@@ -48,30 +49,44 @@
 			<mat-cell *matCellDef="let lesson">{{lesson.id}}</mat-cell>
 		</ng-container>
 
-		<ng-container matColumnDef="subject">
-			<mat-header-cell *matHeaderCellDef>MATERIA</mat-header-cell>			
-			<mat-cell *matCellDef="let lesson">{{lesson.subject}}</mat-cell>
-		</ng-container>
 
-		<ng-container matColumnDef="score">
-			<mat-header-cell *matHeaderCellDef>CALIFICACION</mat-header-cell>			
-			<mat-cell *matCellDef="let lesson">{{lesson.score}}</mat-cell>
-		</ng-container>
+  <mat-table class="lesson-table mat-elevation-z8" [dataSource]="dataSource">
 
-		<ng-container matColumnDef="credits">
-			<mat-header-cell *matHeaderCellDef>CREDITOS</mat-header-cell>			
-			<mat-cell *matCellDef="let lesson">{{lesson.credits}}</mat-cell>
-		</ng-container>		
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+      <mat-cell *matCellDef="let lesson">{{lesson.id}}</mat-cell>
+    </ng-container>
 
-		<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-		<mat-row *matRowDef="let myRowData; columns: displayedColumns"></mat-row>
+    <ng-container matColumnDef="subject">
+      <mat-header-cell *matHeaderCellDef>MATERIA</mat-header-cell>
+      <mat-cell *matCellDef="let lesson">{{lesson.subject}}</mat-cell>
+    </ng-container>
 
-	</mat-table>
+    <ng-container matColumnDef="score">
+      <mat-header-cell *matHeaderCellDef>CALIFICACION</mat-header-cell>
+      <mat-cell *matCellDef="let lesson">{{lesson.score}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="credits">
+      <mat-header-cell *matHeaderCellDef>CREDITOS</mat-header-cell>
+      <mat-cell *matCellDef="let lesson">{{lesson.credits}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let myRowData; columns: displayedColumns"></mat-row>
 
 
 	<!--Clase: bnt-print
 		Descripcion: Elemento de tipo boton que tendra la funcion de imprimir la boleta del alumno-->	
 	<button mat-raised-button color="primary" class="btn-print">Imprimir</button>
 
+  </mat-table>
+
+
+  <br/>
+  <p>Firma electronica: {{signature}}</p>
+  <div class="fa-pull-right">
+    <button mat-raised-button color="primary">Imprimir</button>
+  </div>
 
 </div>

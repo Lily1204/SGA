@@ -11,6 +11,7 @@ import {Component} from '@angular/core';
  */ 
 export class ReportCardComponent {
 
+
     // Datos del estudiante
     student:any = 
       [{  date: '04/06/2017',
@@ -62,5 +63,6 @@ export class ReportCardComponent {
         credits: 5
       }
     ]
+
 
 }

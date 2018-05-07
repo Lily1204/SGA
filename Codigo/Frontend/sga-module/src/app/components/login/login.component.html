@@ -1,33 +1,69 @@
+<!-- HTML para el componente de login -->
+
+<!-- Div del contenedor principal -->
 <div class="container">
-    <div class="img-container">
-        <img id="logging-background" class="logging-background" src="../../../assets/images/common/ito.jpg"
-             alt="background"/>
+  <!-- Div del contenedor de la imagen de background -->
+  <div class="img-container">
+    <!-- Img donde se renderiza la imagen -->
+    <img id="logging-background" class="login-background" src="../../../assets/images/common/ito.jpg"
+         alt="background"/>
+  </div>
+  <!-- Div que indica donde renderizar el formulario -->
+  <div class="row justify-content-end">
+    <!-- Div que indica la mayor parte de estilos que conforman el formulario de login, como lo es
+     el estilo de tarjeta, la alineacion del texto, sus margenes, paddings y tamaño dependiendo del
+      tamaño de la pantalla, con lo cual este se vuelve responsivo-->
+    <div class="col col-lg-4 p-0 m-2 my-lg-5 text-right card">
+      <!-- Div del cuerpo de la tarjeta -->
+      <div class="card-body">
+        <!-- Etiqueta form que indica que es un formulario -->
+        <form [formGroup]="form">
+          <!-- Div que agrupa un input y su respectivo label, el cual le indica al usuario que informacion debe
+           ingresar en el input para la entrada de texto-->
+          <div class="form-group">
+            <!-- Label del input -->
+            <label for="controlNumber">Numero de Control</label>
+            <!-- Input para el numero de control -->
+            <input formControlName="controlNumber" name="controlNumber" id="controlNumber"
+                   class="form-control" placeholder="14011345" minlength="8" maxlength="8" onlyNumbers>
+          </div>
+          <!-- Div que alerta al usuario cuando los datos introducidos son erroneos -->
+          <div class="alert-danger text-danger text-center" *ngIf="form.errors?.unauthorized">
+            <!-- Componente de Angular del framework de iconos Font Awesome, este indica que icono se agregara
+             asi como algunas propiedades -->
+            <fa-icon [icon]="errorIcon"></fa-icon>
+            Usuario o contraseña incorrectos
+          </div>
+          <!-- Div que agrupa un input y su respectivo label, el cual le indica al usuario que informacion debe
+           ingresar en el input para la entrada de texto-->
+          <div class="form-group">
+            <!-- Label del input -->
+            <label for="password">Contraseña</label>
+            <!-- Input para la contraseña -->
+            <input formControlName="password" name="password" id="password" class="form-control"
+                   (keyup.enter)="!form.invalid ? onClickLoggingButton() : ''"
+                   placeholder="password"
+                   type="password">
+          </div>
+        </form>
+      </div>
+      <!-- Div para el footer de la tarjeta, contiene el boton de inicio de sesion -->
+      <div class="card-footer">
+        <!-- Button para el inicio de sesion -->
+        <button [disabled]="form.invalid" (click)="onClickLoggingButton()" class="btn btn-outline-primary">
+          <!-- Texto para el boton cuando no esta enviando peticion para autenticarse al backend -->
+          <span *ngIf="!loading; else loader">Iniciar Sesión</span>
+          <!-- Etiqueta ng-template de angular, esta indica al framework que las etiquetas de html que
+           existen dentro de ellas no seran renderizadas a menos que se indique, en este caso cuando
+           se hace la consulta al backend la variable "loading" cambia a "true" y el texto "Inciar Sesion"
+           se oculta y se muestra el contenido dentro de esta etiqueta -->
+          <ng-template #loader>
+            <!-- Componente de Angular del framework de iconos Font Awesome, este indica que icono se agregara
+             asi como algunas propiedades -->
+            <fa-icon [icon]="loadIcon" [spin]="true"></fa-icon>
+          </ng-template>
+        </button>
+      </div>
     </div>
-    <div class="row justify-content-end">
-        <div class="col col-lg-4 p-0 m-2 my-lg-5 text-right card">
-            <div class="card-body">
-                <form [formGroup]="form">
-                    <div class="form-group">
-                        <label for="controlNumber">Numero de Control</label>
-                        <input formControlName="controlNumber" name="controlNumber" id="controlNumber"
-                               class="form-control" placeholder="14011345" minlength="8" maxlength="8" onlyNumbers>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Contraseña</label>
-                        <input formControlName="password" name="password" id="password" class="form-control"
-                               placeholder="password"
-                               type="password">
-                    </div>
-                </form>
-            </div>
-            <div class="card-footer">
-                <button [disabled]="form.invalid" (click)="onClickLoggingButton()" class="btn btn-outline-primary">
-                    <span *ngIf="!loading; else loader">Iniciar Seción</span>
-                    <ng-template #loader>
-                        <fa-icon [icon]="loadIcon" [spin]="true"></fa-icon>
-                    </ng-template>
-                </button>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>

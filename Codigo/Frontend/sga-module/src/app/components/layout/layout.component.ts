@@ -18,6 +18,18 @@ import {faEdit} from '@fortawesome/fontawesome-free-regular';
  * */
 import {filter} from 'rxjs/operator/filter';
 import {Subscription} from 'rxjs/Subscription';
+/**
+ * Librerias de Ng R X Store
+ * */
+import {Store} from '@ngrx/store';
+/**
+ * Acciones para la store
+ * */
+import * as AuthenticationActions from '../../actions/authentication.actions';
+/**
+ * Tipos de datos
+ * */
+import {AppState} from '../../models/app.state';
 
 /**
  * Declaracion de componente tomando las anotaciones de angular
@@ -25,8 +37,8 @@ import {Subscription} from 'rxjs/Subscription';
  * templateUrl = Indica la ubicacion de la template de html para el componente
  * */
 @Component({
-    selector: 'app-layout',
-    templateUrl: './layout.component.html'
+  selector: 'app-layout',
+  templateUrl: './layout.component.html'
 })
 /**
  * Clase LayoutComponent que implementa las interfaces OnInit y
@@ -35,85 +47,91 @@ import {Subscription} from 'rxjs/Subscription';
  * */
 export class LayoutComponent implements OnInit, OnDestroy {
 
-    /**
-     * Referencia a los iconos de font awesome
-     * */
-    signOutAlt: IconDefinition = faSignOutAlt;
-    print: IconDefinition = faPrint;
-    edit: IconDefinition = faEdit;
-    graduationCap: IconDefinition = faGraduationCap;
+  /**
+   * Referencia a los iconos de font awesome
+   * */
+  signOutAlt: IconDefinition = faSignOutAlt;
+  print: IconDefinition = faPrint;
+  edit: IconDefinition = faEdit;
+  graduationCap: IconDefinition = faGraduationCap;
 
-    /**
-     * Variable que indicara cuando se este cargando los datos del servidor tras la petición del usuario
-     * */
-    pageIsLoading: boolean;
+  /**
+   * Variable que indicara cuando se este cargando los datos del servidor tras la petición del usuario
+   * */
+  pageIsLoading: boolean;
 
-    /**
-     * Variable para almacenar todas las subscripciones
-     * */
-    subscriptions: Subscription;
+  /**
+   * Variable para almacenar todas las subscripciones
+   * */
+  subscriptions: Subscription;
 
+  /**
+   * Constructor de la clase
+   * */
+  constructor(private router: Router, private store: Store<AppState>) {
     /**
-     * Constructor de la clase
+     * Inicializacion del objeto
      * */
-    constructor(private router: Router) {
+    this.subscriptions = new Subscription();
+  }
+
+  /**
+   * Metodo implementado por la interfaz OnInit
+   * */
+  ngOnInit(): void {
+    /**
+     * Se añade una subscripcion
+     * */
+    this.subscriptions.add(
+      /**
+       * Metodo de la libreria de rxjs que permite
+       * filtrar Observables
+       * */
+      filter.call(
         /**
-         * Inicializacion del objeto
+         * Observable de los eventos del router
          * */
-        this.subscriptions = new Subscription();
-    }
-
-    /**
-     * Metodo implementado por la interfaz OnInit
-     * */
-    ngOnInit(): void {
+        this.router.events,
         /**
-         * Se añade una subscripcion
+         * Logica del filtro de eventos del router,
+         * el cual solo dejara pasar las instancias
+         * de RouterEvent
          * */
-        this.subscriptions.add(
+        event => event instanceof RouterEvent)
+      /**
+       * Subscripcion al los eventos
+       * */
+        .subscribe(data => {
+          if (data instanceof NavigationStart) {
             /**
-             * Metodo de la libreria de rxjs que permite
-             * filtrar Observables
+             * Si el argumento "data" es una instancia de
+             * NavigationStart cambia el valor a "true"
              * */
-            filter.call(
-                /**
-                 * Observable de los eventos del router
-                 * */
-                this.router.events,
-                /**
-                 * Logica del filtro de eventos del router,
-                 * el cual solo dejara pasar las instancias
-                 * de RouterEvent
-                 * */
-                event => event instanceof RouterEvent)
+            this.pageIsLoading = true;
+          } else if (data instanceof NavigationEnd) {
             /**
-             * Subscripcion al los eventos
+             * Si el argumento "data" es una instancia de
+             * NavigationEnd cambia el valor a "false"
              * */
-                .subscribe(data => {
-                    if (data instanceof NavigationStart) {
-                        /**
-                         * Si el argumento "data" es una instancia de
-                         * NavigationStart cambia el valor a "true"
-                         * */
-                        this.pageIsLoading = true;
-                    } else if (data instanceof NavigationEnd) {
-                        /**
-                         * Si el argumento "data" es una instancia de
-                         * NavigationEnd cambia el valor a "false"
-                         * */
-                        this.pageIsLoading = false;
-                    }
-                }));
-    }
+            this.pageIsLoading = false;
+          }
+        }));
+  }
 
+  /**
+   * Metodo implementado por la interfaz OnDestroy
+   * */
+  ngOnDestroy(): void {
     /**
-     * Metodo implementado por la interfaz OnDestroy
-     * */
-    ngOnDestroy(): void {
-        /**
-         * Llamada al metodo unsubscribe que desuscribe
-         * todas las subscripciones añadidas
-         */
-        this.subscriptions.unsubscribe();
-    }
+     * Llamada al metodo unsubscribe que desuscribe
+     * todas las subscripciones añadidas
+     */
+    this.subscriptions.unsubscribe();
+  }
+
+  onLogout() {
+    this.router.navigate(['..', 'login']).then(() => {
+      this.store.dispatch(new AuthenticationActions.Logout());
+    });
+  }
 }

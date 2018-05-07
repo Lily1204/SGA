@@ -27,9 +27,16 @@ import {routes} from './app.routes';
 /**
  * Servicios utilizados por la app
  */
-import {AuthGuardService} from './services/auth-guard.service';
-import {StudentService} from './services/student.service';
+import {AuthGuard} from './guards/auth.guard';
+import {UserService} from './services/user.service';
+/**
+ * importacion de Ng R X Store
+ * */
 import {StoreModule} from '@ngrx/store';
+/**
+ * Reducers de la aplicacion
+ * */
+import {authenticationReducer} from './reducers/authentication.reducer';
 
 /**
  * Declaracion de modulo tomando las anotaciones de angular
@@ -39,21 +46,23 @@ import {StoreModule} from '@ngrx/store';
  * bootstrap = Declara el cargador de la app
  * */
 @NgModule({
-    declarations: [
-        AppComponent
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        RouterModule.forRoot(routes, {useHash: true}),
-        StoreModule.forRoot({})
-    ],
-    providers: [
-        AuthGuardService,
-        StudentService
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes, {useHash: true}),
+    StoreModule.forRoot({
+      user: authenticationReducer
+    })
+  ],
+  providers: [
+    AuthGuard,
+    UserService
+  ],
+  bootstrap: [AppComponent]
 })
 /**
  * Clase del modulo de la aplicacion

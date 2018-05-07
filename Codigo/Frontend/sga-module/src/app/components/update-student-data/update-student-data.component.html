@@ -1,220 +1,220 @@
 <div class="p-1">
-    <div class="accordion" id="generalDataAccordion">
-        <div class="card">
-            <div class="card-header" id="generalDataHeading" style="cursor: pointer;">
-                <h3 class="mb-0" data-toggle="collapse" data-target="#generalDataCollapse" aria-expanded="true"
-                    aria-controls="generalDataCollapse">
-                    Datos del Alumno
-                </h3>
+  <div class="accordion" id="generalDataAccordion">
+    <div class="card">
+      <div class="card-header" id="generalDataHeading" style="cursor: pointer;">
+        <h3 class="mb-0" data-toggle="collapse" data-target="#generalDataCollapse" aria-expanded="true"
+            aria-controls="generalDataCollapse">
+          Datos del Alumno
+        </h3>
+      </div>
+      <div id="generalDataCollapse" class="collapse show" aria-labelledby="generalDataHeading"
+           data-parent="#accordion">
+        <div class="card-body">
+          <form [formGroup]="generalDataForm">
+            <div class="form-group row">
+              <label for="name" class="col-form-label col-sm-2">Nombre</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" formControlName="name"
+                       placeholder="Nombre"/>
+              </div>
             </div>
-            <div id="generalDataCollapse" class="collapse show" aria-labelledby="generalDataHeading"
-                 data-parent="#accordion">
-                <div class="card-body">
-                    <form [formGroup]="generalDataForm">
-                        <div class="form-group row">
-                            <label for="name" class="col-form-label col-sm-2">Nombre</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="name" formControlName="name"
-                                       placeholder="Nombre"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="middleName" class="col-form-label col-sm-2">Segundo Nombre</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="middleName" formControlName="middleName"
-                                       placeholder="Segundo Nombre"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="lastName" class="col-form-label col-sm-2">Apellido Paterno</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="lastName" formControlName="lastName"
-                                       placeholder="Apellido Paterno"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="mothersLastName" class="col-form-label col-sm-2">Apellido Materno</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="mothersLastName"
-                                       formControlName="mothersLastName"
-                                       placeholder="Apellido Materno"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="career" class="col-form-label col-sm-2">Carrera</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="career" formControlName="career"
-                                       placeholder="Carrera"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="semester" class="col-form-label col-sm-2">Semestre</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="semester" formControlName="semester"
-                                       placeholder="Semestre"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="birthday" class="col-form-label col-sm-2">Fecha de Nacimiento</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="birthday" formControlName="birthday"
-                                       placeholder="Fecha de Nacimiento"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="placeOfBirth" class="col-form-label col-sm-2">Lugar</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="placeOfBirth" formControlName="placeOfBirth"
-                                       placeholder="Lugar"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="stateOfBirth" class="col-form-label col-sm-2">Estado</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="stateOfBirth" formControlName="stateOfBirth"
-                                       placeholder="Lugar"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="bloodType" class="col-form-label col-sm-2">Tipo de Sangre</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="bloodType" formControlName="bloodType"
-                                       placeholder="Tipo de Sangre"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="email" class="col-form-label col-sm-2">Correo</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="email" formControlName="email"
-                                       placeholder="Correo"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="telephone" class="col-form-label col-sm-2">Telefono</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="telephone" formControlName="telephone"
-                                       placeholder="Telefono"/>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+            <div class="form-group row">
+              <label for="middleName" class="col-form-label col-sm-2">Segundo Nombre</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="middleName" formControlName="middleName"
+                       placeholder="Segundo Nombre"/>
+              </div>
             </div>
+            <div class="form-group row">
+              <label for="lastName" class="col-form-label col-sm-2">Apellido Paterno</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="lastName" formControlName="lastName"
+                       placeholder="Apellido Paterno"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="mothersLastName" class="col-form-label col-sm-2">Apellido Materno</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="mothersLastName"
+                       formControlName="mothersLastName"
+                       placeholder="Apellido Materno"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="career" class="col-form-label col-sm-2">Carrera</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="career" formControlName="career"
+                       placeholder="Carrera"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="semester" class="col-form-label col-sm-2">Semestre</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="semester" formControlName="semester"
+                       placeholder="Semestre"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="birthday" class="col-form-label col-sm-2">Fecha de Nacimiento</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="birthday" formControlName="birthday"
+                       placeholder="Fecha de Nacimiento"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="placeOfBirth" class="col-form-label col-sm-2">Lugar</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="placeOfBirth" formControlName="placeOfBirth"
+                       placeholder="Lugar"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="stateOfBirth" class="col-form-label col-sm-2">Estado</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="stateOfBirth" formControlName="stateOfBirth"
+                       placeholder="Lugar"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="bloodType" class="col-form-label col-sm-2">Tipo de Sangre</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="bloodType" formControlName="bloodType"
+                       placeholder="Tipo de Sangre"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="email" class="col-form-label col-sm-2">Correo</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="email" formControlName="email"
+                       placeholder="Correo"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="telephone" class="col-form-label col-sm-2">Telefono</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="telephone" formControlName="telephone"
+                       placeholder="Telefono"/>
+              </div>
+            </div>
+          </form>
         </div>
-
-        <div class="card">
-            <div class="card-header" id="privateAddressHeading" style="cursor: pointer;">
-                <h3 class="mb-0" data-toggle="collapse" data-target="#privateAddressCollapse" aria-expanded="true"
-                    aria-controls="privateAddressCollapse">
-                    Domicilio Particular
-                </h3>
-            </div>
-            <div id="privateAddressCollapse" class="collapse show" aria-labelledby="privateAddressHeading"
-                 data-parent="#accordion">
-                <div class="card-body">
-                    <form [formGroup]="privateAddressForm">
-                        <div class="form-group row">
-                            <label for="street" class="col-form-label col-sm-2">Calle</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="street" formControlName="street"
-                                       placeholder="Calle"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="number" class="col-form-label col-sm-2">Numero</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="number" formControlName="number"
-                                       placeholder="Numero"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="colony" class="col-form-label col-sm-2">Colonia</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="colony" formControlName="colony"
-                                       placeholder="Colonia"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="township" class="col-form-label col-sm-2">Población</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="township" formControlName="township"
-                                       placeholder="Población"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="town" class="col-form-label col-sm-2">Municipio</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="town" formControlName="town"
-                                       placeholder="Municipio"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="state" class="col-form-label col-sm-2">Estado</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="state" formControlName="state"
-                                       placeholder="Estado"/>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="postalCode" class="col-form-label col-sm-2">Codigo Postal</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="postalCode" formControlName="postalCode"
-                                       placeholder="Postal Code"/>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
 
-    <form [formGroup]="enableTutorsForm">
-        <div class="pretty p-default p-smooth">
-            <input class="form-check-input" type="checkbox" id="fatherCheckbox" formControlName="father">
-            <div class="state p-primary">
-                <label for="fatherCheckbox">
-                    Padre
-                </label>
+    <div class="card">
+      <div class="card-header" id="privateAddressHeading" style="cursor: pointer;">
+        <h3 class="mb-0" data-toggle="collapse" data-target="#privateAddressCollapse" aria-expanded="true"
+            aria-controls="privateAddressCollapse">
+          Domicilio Particular
+        </h3>
+      </div>
+      <div id="privateAddressCollapse" class="collapse show" aria-labelledby="privateAddressHeading"
+           data-parent="#accordion">
+        <div class="card-body">
+          <form [formGroup]="privateAddressForm">
+            <div class="form-group row">
+              <label for="street" class="col-form-label col-sm-2">Calle</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="street" formControlName="street"
+                       placeholder="Calle"/>
+              </div>
             </div>
-        </div>
-        <div class="pretty p-default p-smooth">
-            <input class="form-check-input" type="checkbox" id="motherCheckbox" formControlName="mother">
-            <div class="state p-primary">
-                <label for="motherCheckbox">
-                    Madre
-                </label>
+            <div class="form-group row">
+              <label for="number" class="col-form-label col-sm-2">Numero</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="number" formControlName="number"
+                       placeholder="Numero"/>
+              </div>
             </div>
-        </div>
-        <div class="pretty p-default p-smooth">
-            <input class="form-check-input" type="checkbox" id="tutorCheckbox" formControlName="tutor">
-            <div class="state p-primary">
-                <label for="tutorCheckbox">
-                    Tutor
-                </label>
+            <div class="form-group row">
+              <label for="colony" class="col-form-label col-sm-2">Colonia</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="colony" formControlName="colony"
+                       placeholder="Colonia"/>
+              </div>
             </div>
+            <div class="form-group row">
+              <label for="township" class="col-form-label col-sm-2">Población</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="township" formControlName="township"
+                       placeholder="Población"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="town" class="col-form-label col-sm-2">Municipio</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="town" formControlName="town"
+                       placeholder="Municipio"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="state" class="col-form-label col-sm-2">Estado</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="state" formControlName="state"
+                       placeholder="Estado"/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="postalCode" class="col-form-label col-sm-2">Codigo Postal</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="postalCode" formControlName="postalCode"
+                       placeholder="Postal Code"/>
+              </div>
+            </div>
+          </form>
         </div>
-    </form>
-
-    <div [formGroup]="generalDataForm">
-        <div *ngIf="enableTutorsForm.controls?.father.value">
-            <app-tutors-data [kinship]="KinshipEnum.FATHER" formControlName="father"></app-tutors-data>
-        </div>
-        <div *ngIf="enableTutorsForm.controls?.mother.value">
-            <app-tutors-data [kinship]="KinshipEnum.MOTHER" formControlName="mother"></app-tutors-data>
-        </div>
-        <div *ngIf="enableTutorsForm.controls?.tutor.value">
-            <app-tutors-data [kinship]="KinshipEnum.TUTOR" formControlName="tutor"></app-tutors-data>
-        </div>
+      </div>
     </div>
+  </div>
 
-    <div class="my-2 text-center">
-        <button [disabled]="generalDataForm.errors || enableTutorsForm.errors || !isUpdatingStudentData"
-                (click)="onUpdateStudentData()"
-                class="btn btn-primary">
-            <span *ngIf="!isUpdatingStudentData">Actualizar Datos</span>
-            <span *ngIf="isUpdatingStudentData">Actualizando...</span>
-        </button>
-        <div class="fa-pull-right">
-            <button class="btn btn-outline-secondary" (click)="onPrintStudentData()">Imprimir</button>
-        </div>
+  <form [formGroup]="enableTutorsForm" class="d-print-none">
+    <div class="pretty p-default p-smooth">
+      <input class="form-check-input" type="checkbox" id="fatherCheckbox" formControlName="father">
+      <div class="state p-primary">
+        <label for="fatherCheckbox">
+          Padre
+        </label>
+      </div>
     </div>
+    <div class="pretty p-default p-smooth">
+      <input class="form-check-input" type="checkbox" id="motherCheckbox" formControlName="mother">
+      <div class="state p-primary">
+        <label for="motherCheckbox">
+          Madre
+        </label>
+      </div>
+    </div>
+    <div class="pretty p-default p-smooth">
+      <input class="form-check-input" type="checkbox" id="tutorCheckbox" formControlName="tutor">
+      <div class="state p-primary">
+        <label for="tutorCheckbox">
+          Tutor
+        </label>
+      </div>
+    </div>
+  </form>
+
+  <div [formGroup]="generalDataForm">
+    <div *ngIf="enableTutorsForm.controls?.father.value">
+      <app-tutors-data [kinship]="KinshipEnum.FATHER" formControlName="father"></app-tutors-data>
+    </div>
+    <div *ngIf="enableTutorsForm.controls?.mother.value">
+      <app-tutors-data [kinship]="KinshipEnum.MOTHER" formControlName="mother"></app-tutors-data>
+    </div>
+    <div *ngIf="enableTutorsForm.controls?.tutor.value">
+      <app-tutors-data [kinship]="KinshipEnum.TUTOR" formControlName="tutor"></app-tutors-data>
+    </div>
+  </div>
+
+  <div class="my-2 text-center d-print-none">
+    <button [disabled]="generalDataForm.errors || enableTutorsForm.errors || !isUpdatingStudentData"
+            (click)="onUpdateStudentData()"
+            class="btn btn-primary">
+      <span *ngIf="!isUpdatingStudentData">Actualizar Datos</span>
+      <span *ngIf="isUpdatingStudentData">Actualizando...</span>
+    </button>
+    <div class="fa-pull-right">
+      <button class="btn btn-outline-secondary" (click)="onPrintStudentData()">Imprimir</button>
+    </div>
+  </div>
 </div>

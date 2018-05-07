@@ -11,18 +11,18 @@ import {MatButtonModule} from '@angular/material/button';
 import {ReportCardComponent} from './report-card.component';
 
 @NgModule({
-    declarations: [
-        ReportCardComponent/**Declarando nuestro componente*/
-    ],
-    imports: [
-        CommonModule, /**Importacion de CommonModule*/
-        MatTableModule, /**Importacion de MatTableModule*/
-        MatButtonModule, /**Importacion de MatButtonModule*/
-        RouterModule.forChild([{path: '', component: ReportCardComponent}])//Enrutando vista
-    ],
-    exports: [
-        ReportCardComponent
-    ]
+  declarations: [
+    ReportCardComponent/**Declarando nuestro componente*/
+  ],
+  imports: [
+    CommonModule, /**Importacion de CommonModule*/
+    MatTableModule, /**Importacion de MatTableModule*/
+    MatButtonModule, /**Importacion de MatButtonModule*/
+    RouterModule.forChild([{path: '', component: ReportCardComponent}])//Enrutando vista
+  ],
+  exports: [
+    ReportCardComponent
+  ]
 })
 export class ReportCardModule {
 }

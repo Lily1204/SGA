@@ -1,100 +1,100 @@
 <div class="card">
-    <div class="card-header" [id]="kinshipToString + 'Heading'" style="cursor: pointer;">
-        <h3 class="mb-0" data-toggle="collapse" [attr.data-target]="'#' + kinshipToString + 'Collapse'"
-            aria-expanded="true"
-            [attr.aria-controls]="kinshipToString + 'Collapse'">
-            {{kinshipToString}}
-        </h3>
-    </div>
-    <div [id]="kinshipToString + 'Collapse'" class="collapse show" [attr.aria-labelledby]="kinshipToString + 'Heading'"
-         data-parent="#accordion">
-        <div class="card-body">
-            <form [formGroup]="tutorForm">
-                <div class="form-group row">
-                    <label for="name" class="col-form-label col-sm-2">Nombre</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="name" formControlName="name"
-                               placeholder="Nombre"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="lastName" class="col-form-label col-sm-2">Apellido Paterno</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="lastName" formControlName="lastName"
-                               placeholder="Apellido Paterno"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="mothersLastName" class="col-form-label col-sm-2">Apellido Materno</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="mothersLastName" formControlName="mothersLastName"
-                               placeholder="Apellido Materno"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="email" class="col-form-label col-sm-2">Correo</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="email" formControlName="email"
-                               placeholder="Correo"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="telephone" class="col-form-label col-sm-2">Telefono</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="telephone" formControlName="telephone"
-                               placeholder="Telefono"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="street" class="col-form-label col-sm-2">Calle</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="street" formControlName="street"
-                               placeholder="Calle"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="number" class="col-form-label col-sm-2">Numero</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="number" formControlName="number"
-                               placeholder="Numero"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="colony" class="col-form-label col-sm-2">Colonia</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="colony" formControlName="colony"
-                               placeholder="Colonia"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="township" class="col-form-label col-sm-2">Población</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="township" formControlName="township"
-                               placeholder="Población"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="postalCode" class="col-form-label col-sm-2">Codigo Postal</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="postalCode" formControlName="postalCode"
-                               placeholder="Postal Code"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="workCenter" class="col-form-label col-sm-2">Centro de Trabajo</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="workCenter" formControlName="workCenter"
-                               placeholder="Centro de Trabajo"/>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="kinship" class="col-form-label col-sm-2">Parentesco</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="kinship" formControlName="kinship"
-                               placeholder="Parentesco"/>
-                    </div>
-                </div>
-            </form>
+  <div class="card-header" [id]="kinshipToString + 'Heading'" style="cursor: pointer;">
+    <h3 class="mb-0" data-toggle="collapse" [attr.data-target]="'#' + kinshipToString + 'Collapse'"
+        aria-expanded="true"
+        [attr.aria-controls]="kinshipToString + 'Collapse'">
+      {{kinshipToString}}
+    </h3>
+  </div>
+  <div [id]="kinshipToString + 'Collapse'" class="collapse show" [attr.aria-labelledby]="kinshipToString + 'Heading'"
+       data-parent="#accordion">
+    <div class="card-body">
+      <form [formGroup]="tutorForm">
+        <div class="form-group row">
+          <label for="name" class="col-form-label col-sm-2">Nombre</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="name" formControlName="name"
+                   placeholder="Nombre"/>
+          </div>
         </div>
+        <div class="form-group row">
+          <label for="lastName" class="col-form-label col-sm-2">Apellido Paterno</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="lastName" formControlName="lastName"
+                   placeholder="Apellido Paterno"/>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="mothersLastName" class="col-form-label col-sm-2">Apellido Materno</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="mothersLastName" formControlName="mothersLastName"
+                   placeholder="Apellido Materno"/>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="email" class="col-form-label col-sm-2">Correo</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="email" formControlName="email"
+                   placeholder="Correo"/>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="telephone" class="col-form-label col-sm-2">Telefono</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="telephone" formControlName="telephone"
+                   placeholder="Telefono"/>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="street" class="col-form-label col-sm-2">Calle</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="street" formControlName="street"
+                   placeholder="Calle"/>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="number" class="col-form-label col-sm-2">Numero</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="number" formControlName="number"
+                   placeholder="Numero"/>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="colony" class="col-form-label col-sm-2">Colonia</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="colony" formControlName="colony"
+                   placeholder="Colonia"/>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="township" class="col-form-label col-sm-2">Población</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="township" formControlName="township"
+                   placeholder="Población"/>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="postalCode" class="col-form-label col-sm-2">Codigo Postal</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="postalCode" formControlName="postalCode"
+                   placeholder="Postal Code"/>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="workCenter" class="col-form-label col-sm-2">Centro de Trabajo</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="workCenter" formControlName="workCenter"
+                   placeholder="Centro de Trabajo"/>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="kinship" class="col-form-label col-sm-2">Parentesco</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="kinship" formControlName="kinship"
+                   placeholder="Parentesco"/>
+          </div>
+        </div>
+      </form>
     </div>
+  </div>
 </div>

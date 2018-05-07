@@ -4,24 +4,25 @@ import {CommonModule} from '@angular/common';
 import {ScheduleComponent} from './schedule.component';
 
 
-/*Importacion de modulo a utilizar para el diseño de la vista 
+/*Importacion de modulo a utilizar para el diseño de la vista
   en este caso el de tabla*/
+
 //import {  MatTableModule  } from '@angular/material/table';
 
 @NgModule({
-    declarations: [
-        ScheduleComponent//Declarando nuestro componente
-    ],
-    imports: [
+  declarations: [
+    ScheduleComponent//Declarando nuestro componente
+  ],
+  imports: [
 
-        CommonModule,//Importacion de CommonModule
-        //MatTableModule,//Importacion de MatTableModule
-        RouterModule.forChild([{path: '', component: ScheduleComponent}])//Enrutando la vista
+    CommonModule,//Importacion de CommonModule
+    //MatTableModule,//Importacion de MatTableModule
+    RouterModule.forChild([{path: '', component: ScheduleComponent}])//Enrutando la vista
 
-    ],
-    exports: [
-        ScheduleComponent
-    ]
+  ],
+  exports: [
+    ScheduleComponent
+  ]
 })
 export class ScheduleModule {
 }

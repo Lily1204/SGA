@@ -1,6 +1,6 @@
 package com.mx.ito.sga.module.app.models;
 
-public class UserAuth {
+public class UserAuthRequest {
 
     private int controlNumber;
     private String password;
@@ -9,7 +9,7 @@ public class UserAuth {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public int getControlNumber() {
+        return controlNumber;
     }
 }

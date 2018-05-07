@@ -1,24 +1,24 @@
 /*Estilo del titulo de la vista*/
 h1 {
-    color: red;
-    text-align: right;
+  color: red;
+  text-align: right;
 }
 
 /*Estilo para Table*/
 
 .headerMain {
-    text-align: center;
-    font-size: 14px;
+  text-align: center;
+  font-size: 14px;
 }
 
 .subjects {
-    text-align: center;
-    vertical-align: middle;
+  text-align: center;
+  vertical-align: middle;
 }
 
 /*Estilo para Button */
 
 .btns {
-    background-color: red;
-    font-size: 14px;
+  background-color: red;
+  font-size: 14px;
 }

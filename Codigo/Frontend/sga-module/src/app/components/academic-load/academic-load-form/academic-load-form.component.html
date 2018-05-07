@@ -1,8 +1,8 @@
 <div class="p-1 row">
-    <div class="col" *ngFor="let subjects of subjectsInSemester">
-        <div class="row" *ngFor="let subject of subjects?.subjects">
-            <app-academic-load-item [subject]="subject"
-                                    (selectedItem)="onSelectedItem($event)"></app-academic-load-item>
-        </div>
+  <div class="col" *ngFor="let subjects of subjectsInSemester">
+    <div class="row" *ngFor="let subject of subjects?.subjects">
+      <app-academic-load-item [subject]="subject"
+                              (selectedItem)="onSelectedItem($event)"></app-academic-load-item>
     </div>
+  </div>
 </div>

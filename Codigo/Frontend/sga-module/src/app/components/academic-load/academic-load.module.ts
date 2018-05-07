@@ -29,18 +29,18 @@ import {CommonModule} from '@angular/common';
  * el uso en otros modulos
  * */
 @NgModule({
-    declarations: [
-        AcademicLoadComponent
-    ],
-    imports: [
-        RouterModule.forChild([{path: '', component: AcademicLoadComponent}]),
-        AcademicLoadFormModule,
-        ToastModule.forRoot(),
-        CommonModule
-    ],
-    exports: [
-        AcademicLoadComponent
-    ]
+  declarations: [
+    AcademicLoadComponent
+  ],
+  imports: [
+    RouterModule.forChild([{path: '', component: AcademicLoadComponent}]),
+    AcademicLoadFormModule,
+    ToastModule.forRoot(),
+    CommonModule
+  ],
+  exports: [
+    AcademicLoadComponent
+  ]
 })
 /**
  * Clase del modulo de Academic Load

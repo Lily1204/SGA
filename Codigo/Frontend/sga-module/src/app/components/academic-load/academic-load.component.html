@@ -3,12 +3,15 @@
   <h6>Minimo de Creditos para inscribirte: {{minorCredits}}</h6>
   <div class="progress m-2 d-print-none">
     <div class="progress-bar progress-bar-striped progress-bar-animated"
-         [style.width.%]="(100/availableCredits)*selectedCredits"></div>
+         [ngClass]="{'bg-warning': selectedCredits < minorCredits, 'bg-success': selectedCredits >= minorCredits,
+         'bg-danger': selectedCredits > availableCredits}" [style.width.%]="(100/availableCredits)*selectedCredits"
+         [matTooltip]="'Creditos seleccionados: ' + selectedCredits" matTooltipPosition="above"></div>
   </div>
   <app-academic-load-form [subjectsInSemester]="subjectsInSemester"
                           (valueChanges)="onValueChanges($event)"></app-academic-load-form>
   <div class="my-2 d-print-none">
-    <button (click)="onSendAcademicLoad()" [disabled]="isSendingAcademicLoad" class="btn btn-primary">
+    <button (click)="onSendAcademicLoad()" [disabled]="isSendingAcademicLoad || selectedCredits < minorCredits"
+            class="btn btn-primary">
       <span *ngIf="!isSendingAcademicLoad">Enviar Carga Academica</span>
       <span *ngIf="isSendingAcademicLoad">Enviando...</span>
     </button>

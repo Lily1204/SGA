@@ -9,7 +9,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 /**
  * Interface de tipo "Subject"
  * */
-import {Subject} from '../../../../models/subject';
+import {Subject} from '../../../../models/subject.interface';
 
 /**
  * Declaracion de componente tomando las anotaciones de angular

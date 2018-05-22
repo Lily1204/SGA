@@ -34,6 +34,10 @@ import {UserService} from './services/user.service';
  * */
 import {StoreModule} from '@ngrx/store';
 /**
+ * importacion de las herramientas de desarrollo de Ng R X Store
+ * */
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+/**
  * Reducers de la aplicacion
  * */
 import {authenticationReducer} from './reducers/authentication.reducer';
@@ -56,6 +60,9 @@ import {authenticationReducer} from './reducers/authentication.reducer';
     RouterModule.forRoot(routes, {useHash: true}),
     StoreModule.forRoot({
       user: authenticationReducer
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25
     })
   ],
   providers: [

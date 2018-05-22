@@ -7,6 +7,7 @@
  * */
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
+import {CommonModule} from '@angular/common';
 /**
  * Componente de Academic Load
  * */
@@ -16,10 +17,18 @@ import {AcademicLoadComponent} from './academic-load.component';
  * */
 import {AcademicLoadFormModule} from './academic-load-form/academic-load-form.module';
 /**
+ * Modulo de Academic Load Dialog
+ * */
+import {AcademicLoadDialogModule} from './academic-load-dialog/academic-load-dialog.module';
+/**
  * Modulo de notificaciones
  * */
 import {ToastModule} from 'ng2-toastr';
-import {CommonModule} from '@angular/common';
+/**
+ * Modulos de angular material
+ * */
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
 
 /**
  * Declaracion de modulo tomando las anotaciones de angular
@@ -34,9 +43,12 @@ import {CommonModule} from '@angular/common';
   ],
   imports: [
     RouterModule.forChild([{path: '', component: AcademicLoadComponent}]),
+    CommonModule,
     AcademicLoadFormModule,
+    AcademicLoadDialogModule,
     ToastModule.forRoot(),
-    CommonModule
+    MatTooltipModule,
+    MatDialogModule
   ],
   exports: [
     AcademicLoadComponent

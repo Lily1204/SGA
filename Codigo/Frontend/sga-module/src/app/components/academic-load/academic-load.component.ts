@@ -14,7 +14,30 @@ import {UserService} from '../../services/user.service';
  * Librerias de rxjs que añade soporte para programación funcional
  * */
 import {Subscription} from 'rxjs/Subscription';
+import {Observable} from 'rxjs/Observable';
+/**
+ * Manager de Toast para las notificaciones
+ * */
 import {ToastsManager} from 'ng2-toastr';
+/**
+ * Librerias de Ng R X Store
+ * */
+import {Store} from '@ngrx/store';
+/**
+ * Tipos de datos
+ * */
+import {AppState} from '../../models/app.state';
+import {Subject} from '../../models/subject.interface';
+import {SubjectsInSemester} from '../../models/subjects-in-semester.interface';
+import {UserData} from '../../models/user-data.interface';
+/**
+ * Librerias de angular material
+ * */
+import {MatDialog} from '@angular/material';
+/**
+ * Componente de Academic Load Dialog
+ * */
+import {AcademicLoadDialogComponent} from './academic-load-dialog/academic-load-dialog.component';
 
 /**
  * Declaracion de componente tomando las anotaciones de angular
@@ -36,7 +59,7 @@ export class AcademicLoadComponent implements OnInit, OnDestroy {
    * Variable para almacenar en memoria
    * el cardex del alumno
    * */
-  subjectsInSemester: any;
+  subjectsInSemester: SubjectsInSemester[];
 
   /**
    * Variable para almacenar los
@@ -62,20 +85,36 @@ export class AcademicLoadComponent implements OnInit, OnDestroy {
    * Variable para almacenar las materias
    * seleccionadas
    * */
-  selectedSubjects: any[];
+  selectedSubjects: Subject[];
 
   /**
    * Variable para almacenar todas las subscripciones
    * */
   subscriptions: Subscription;
 
+  /**
+   * Variable que indica si la carga academica esta enviandose
+   * */
   isSendingAcademicLoad: boolean;
+
+  /**
+   * Observable del objeto usuario
+   * */
+  user$: Observable<UserData>;
+
+  /**
+   * Variable que almacena la informacion del usuario
+   * */
+  user: UserData;
 
   /**
    * Constructor de la clase
    * */
   constructor(private studentService: UserService,
-              private toastManager: ToastsManager, vcr: ViewContainerRef) {
+              private toastManager: ToastsManager,
+              private store: Store<AppState>,
+              public dialog: MatDialog,
+              vcr: ViewContainerRef) {
     /**
      * Inicializacion del objeto
      * */
@@ -92,6 +131,9 @@ export class AcademicLoadComponent implements OnInit, OnDestroy {
 
     this.selectedSubjects = [];
 
+    /**
+     * Configuracion del toast manager
+     * */
     this.toastManager.setRootViewContainerRef(vcr);
   }
 
@@ -100,19 +142,41 @@ export class AcademicLoadComponent implements OnInit, OnDestroy {
    * */
   ngOnInit(): void {
     /**
+     * Se pide al storage el estado actual de la aplicacion
+     * y se le asigna el observable del dato a la variable
+     * "user$"
+     * */
+    this.user$ = this.store.select((state: AppState) => state.user);
+
+    /**
      * Se añade una subscripcion
      * */
     this.subscriptions.add(
       /**
-       * Llamada al servicio "subjectsInSemester" el cual
-       * pide el cardex del alumno
+       * Escucha los cambios en el store
+       * para los datos del usuario
        * */
-      this.studentService.subjectsInSemester().subscribe(subjects => {
+      this.user$.subscribe(user => {
         /**
-         * Asignacion del arreglo de materias
-         * por semestre
+         * Asigna la informacion del usuario almacenada
+         * en el storage para que sea posible acceder
+         * rapidamente a la informacion en la clase
          * */
-        this.subjectsInSemester = subjects;
+        this.user = user;
+        /**
+         * Se añade una subscripcion
+         * */
+        this.subscriptions.add(
+          /**
+           * Llamada al servicio "subjectsInSemester" el cual
+           * pide el cardex del alumno
+           * */
+          this.studentService.subjectsInSemester(user.id).subscribe(subjects =>
+            /**
+             * Asignacion del arreglo de materias
+             * por semestre
+             * */
+            this.subjectsInSemester = subjects));
       }));
   }
 
@@ -157,11 +221,56 @@ export class AcademicLoadComponent implements OnInit, OnDestroy {
    * carga academica
    * */
   onSendAcademicLoad() {
-    this.isSendingAcademicLoad = true;
-    setTimeout(() => {
-      this.toastManager.success('Carga Academica enviada con Exito');
-      this.isSendingAcademicLoad = false;
-    }, 1000);
+    if (this.selectedCredits > this.availableCredits) {
+      this.openDialog();
+    } else {
+      /**
+       * Cambia el valor de la variable
+       * para indicar que la carga academica
+       * se esta enviando
+       * */
+      this.isSendingAcademicLoad = true;
+      /**
+       * Se añade una subscripcion
+       * */
+      this.subscriptions.add(
+        /**
+         * Llamada al servicio "academicLoad" el cual
+         * envia las materias seleccionadas por el alumno
+         * */
+        this.studentService.academicLoad(this.user.id, this.selectedSubjects)
+        /**
+         * Cuando el servicio recibe la respuesta del
+         * servidor cambia el valor de la variable para
+         * indicar al usuario que termino de cargar
+         * */
+          .finally(() => this.isSendingAcademicLoad = false)
+          .subscribe(() =>
+              /**
+               * Si el servicio completa la
+               * operacion con exito se ejecutara
+               * el codigo en este bloque
+               * */
+              this.toastManager.success('Carga Academica enviada con Exito'),
+            () =>
+              /**
+               * De lo contrario, se ejecuta
+               * este bloque de codigo
+               * */
+              this.toastManager.error('Sucedio algun error al enviar la carga academica'))
+      );
+    }
+  }
+
+  /**
+   * Metodo que abre el dialogo
+   * */
+  openDialog(): void {
+    this.dialog.open(AcademicLoadDialogComponent, {
+      data: {
+        availableCredits: this.availableCredits
+      }
+    });
   }
 
   /**

@@ -1,13 +1,22 @@
 package com.mx.ito.sga.module.app.models;
 
-public class SubjectInSemester {
+public class SubjectsInSemester {
 
+    private int studentId;
     private int semester;
     private Subject[] subjects;
 
-    public SubjectInSemester(int semester, Subject[] subjects) {
+    public SubjectsInSemester() {
+    }
+
+    public SubjectsInSemester(int studentId, int semester, Subject[] subjects) {
+        this.studentId = studentId;
         this.semester = semester;
         this.subjects = subjects;
+    }
+
+    public int getStudentId() {
+        return studentId;
     }
 
     public int getSemester() {

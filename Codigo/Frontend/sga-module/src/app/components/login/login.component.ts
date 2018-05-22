@@ -35,7 +35,6 @@ import {UserData} from '../../models/user-data.interface';
  * Icono de "Spinner" e interfaz de font awesome
  * */
 import {faSpinner, faExclamationTriangle} from '@fortawesome/fontawesome-free-solid';
-import {IconDefinition} from '@fortawesome/fontawesome';
 
 /**
  * Declaracion de componente tomando las anotaciones de angular
@@ -73,11 +72,11 @@ export class LoginComponent implements OnDestroy {
   /**
    * Referencia al icono "spinner" de font awesome
    * */
-  loadIcon: IconDefinition = faSpinner;
+  loadIcon = faSpinner;
   /**
    * Referencia al icono "ExclamationTriangle" de font awesome
    * */
-  errorIcon: IconDefinition = faExclamationTriangle;
+  errorIcon = faExclamationTriangle;
 
   /**
    * Constructor de la clase
@@ -130,13 +129,15 @@ export class LoginComponent implements OnDestroy {
        * sean validos
        * */
       this.studentService.userLogin(this.form.value)
-      /**Cuando el servicio recibe la respuesta del
+      /**
+       * Cuando el servicio recibe la respuesta del
        * servidor cambia el valor de la variable para
        * indicar al usuario que termino de cargar
        * */
         .finally(() => this.loading = false)
         .subscribe((response: UserData | null) => {
-          /**Recibe la respuesta del servidor en caso
+          /**
+           * Recibe la respuesta del servidor en caso
            * de que se haya completado con exito
            * */
           if (response) {

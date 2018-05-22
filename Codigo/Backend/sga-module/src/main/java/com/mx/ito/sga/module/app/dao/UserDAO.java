@@ -10,9 +10,9 @@ public class UserDAO {
 
     {
         userDataHashMap = new HashMap<>();
-        userDataHashMap.put("15011213Test01", new UserData("15011213", "Julio", "Perez",
+        userDataHashMap.put("15011213Test01", new UserData(15011213, "Julio", "Perez",
                 "Ingenieria en Sistemas Computacionales", 85, 60));
-        userDataHashMap.put("15011270Test02", new UserData("15011270", "Damian", "Zamora",
+        userDataHashMap.put("15011270Test02", new UserData(15011270, "Damian", "Zamora",
                 "Ingenieria en Sistemas Computacionales", 90, 60));
     }
 

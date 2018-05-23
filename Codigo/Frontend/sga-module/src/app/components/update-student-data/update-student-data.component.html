@@ -111,7 +111,7 @@
       <div id="privateAddressCollapse" class="collapse show" aria-labelledby="privateAddressHeading"
            data-parent="#accordion">
         <div class="card-body">
-          <form [formGroup]="privateAddressForm">
+          <form [formGroup]="addressForm">
             <div class="form-group row">
               <label for="street" class="col-form-label col-sm-2">Calle</label>
               <div class="col-sm-10">
@@ -194,7 +194,7 @@
     </div>
   </form>
 
-  <div [formGroup]="generalDataForm">
+  <div [formGroup]="generalDataForm" class="text-center">
     <div *ngIf="enableTutorsForm.controls?.father.value">
       <app-tutors-data [kinship]="KinshipEnum.FATHER" formControlName="father"></app-tutors-data>
     </div>
@@ -207,7 +207,7 @@
   </div>
 
   <div class="my-2 text-center d-print-none">
-    <button [disabled]="generalDataForm.errors || enableTutorsForm.errors || !isUpdatingStudentData"
+    <button [disabled]="generalDataForm.errors || addressForm.errors || isUpdatingStudentData"
             (click)="onUpdateStudentData()"
             class="btn btn-primary">
       <span *ngIf="!isUpdatingStudentData">Actualizar Datos</span>

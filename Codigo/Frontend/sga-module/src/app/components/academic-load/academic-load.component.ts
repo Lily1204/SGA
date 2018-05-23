@@ -277,7 +277,6 @@ export class AcademicLoadComponent implements OnInit, OnDestroy {
    * Metodo que escucha la
    * interaccion del usuario
    * con el boton de imprimir
-   * carga academic
    * */
   onPrintAcademicLoad() {
     window.print();

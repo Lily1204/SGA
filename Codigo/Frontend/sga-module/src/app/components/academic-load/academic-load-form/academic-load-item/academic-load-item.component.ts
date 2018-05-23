@@ -27,13 +27,28 @@ import {Subject} from '../../../../models/subject.interface';
  * */
 export class AcademicLoadItemComponent implements OnInit {
 
+  /**
+   * Declaracion de un valor de entrada
+   * del componente
+   * */
   @Input() subject: Subject;
 
+  /**
+   * Declaracion de un evento del componente
+   * */
+  @Output() selectedItem: EventEmitter<any>;
+
+  /**
+   * Variable usada para saber si el
+   * item es seleccionado o no
+   * */
   _selectedItem: boolean;
 
+  /**
+   * Variable usada para saber si el
+   * item esta desabilitado
+   * */
   _disabled: boolean;
-
-  @Output() selectedItem: EventEmitter<any>;
 
   /**
    * Constructor de la clase

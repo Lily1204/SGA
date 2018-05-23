@@ -165,4 +165,25 @@ public class StudentData {
     public void setTutor(TutorData tutor) {
         this.tutor = tutor;
     }
+
+    @Override
+    public String toString() {
+        return "StudentData{" +
+                "name='" + name + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", mothersLastName='" + mothersLastName + '\'' +
+                ", career='" + career + '\'' +
+                ", semester=" + semester +
+                ", birthday='" + birthday + '\'' +
+                ", placeOfBirth='" + placeOfBirth + '\'' +
+                ", stateOfBirth='" + stateOfBirth + '\'' +
+                ", bloodType='" + bloodType + '\'' +
+                ", email='" + email + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", father=" + father +
+                ", mother=" + mother +
+                ", tutor=" + tutor +
+                '}';
+    }
 }

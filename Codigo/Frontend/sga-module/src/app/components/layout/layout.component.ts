@@ -50,10 +50,10 @@ export class LayoutComponent implements OnInit, OnDestroy {
   /**
    * Referencia a los iconos de font awesome
    * */
-  signOutAlt = faSignOutAlt;
-  print = faPrint;
-  edit = faEdit;
-  graduationCap = faGraduationCap;
+  signOutAlt: IconDefinition = faSignOutAlt;
+  print: IconDefinition = faPrint;
+  edit: IconDefinition = faEdit;
+  graduationCap: IconDefinition = faGraduationCap;
 
   /**
    * Variable que indicara cuando se este cargando los datos del servidor tras la petición del usuario

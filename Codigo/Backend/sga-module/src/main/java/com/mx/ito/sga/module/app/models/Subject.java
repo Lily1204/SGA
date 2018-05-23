@@ -6,7 +6,8 @@ public class Subject {
     private int credits;
     private int qualification;
 
-    public Subject() {}
+    public Subject() {
+    }
 
     public Subject(String code, String name, int credits, int qualification) {
         this.code = code;

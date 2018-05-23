@@ -3,8 +3,10 @@
   <h6>Minimo de Creditos para inscribirte: {{minorCredits}}</h6>
   <div class="progress m-2 d-print-none">
     <div class="progress-bar progress-bar-striped progress-bar-animated"
-         [ngClass]="{'bg-warning': selectedCredits < minorCredits, 'bg-success': selectedCredits >= minorCredits,
-         'bg-danger': selectedCredits > availableCredits}" [style.width.%]="(100/availableCredits)*selectedCredits"
+         [ngClass]="{'bg-warning': subjectsInSemester && selectedCredits < minorCredits,
+         'bg-success': selectedCredits >= minorCredits, 'bg-danger': selectedCredits > availableCredits,
+         'bg-info progress-bar-animated': !subjectsInSemester}"
+         [style.width.%]="subjectsInSemester ? (100/availableCredits)*selectedCredits : 100"
          [matTooltip]="'Creditos seleccionados: ' + selectedCredits" matTooltipPosition="above"></div>
   </div>
   <app-academic-load-form [subjectsInSemester]="subjectsInSemester"

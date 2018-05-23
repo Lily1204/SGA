@@ -1,8 +1,6 @@
 package com.mx.ito.sga.module.app.dao;
 
-import com.mx.ito.sga.module.app.models.StudentData;
-import com.mx.ito.sga.module.app.models.Subject;
-import com.mx.ito.sga.module.app.models.SubjectsInSemester;
+import com.mx.ito.sga.module.app.models.*;
 
 import java.util.HashMap;
 
@@ -11,6 +9,12 @@ public class StudentDAO {
     private static HashMap<Integer, SubjectsInSemester[]> subjectsInSemester;
 
     private static HashMap<Integer, StudentData> studentData;
+
+    private static HashMap<Integer, AddressData> addressData;
+
+    private static HashMap<Integer, ReportCard> reportCard;
+
+    private static HashMap<Integer, ScheduleData> scheduleData;
 
     {
         subjectsInSemester = new HashMap<>();
@@ -157,7 +161,41 @@ public class StudentDAO {
         studentData.put(15011213, new StudentData("Julio", "Adan", "Perez",
                 "Garcia", "Ingenieria en Sistemas", 6,
                 "10/12/1995", "Orizaba", "Veracruz", "O+",
-                "julioperezag@gmail.com", "2722150807", null, null, null));
+                "julioperezag@gmail.com", "2722150807",
+                new TutorData("Hilario", "Perez", "Tinoco",
+                        "hilarioperez@gmail.com", "2721305677", "Las Doncellas", 27,
+                        "Los Fresnos", "Nogales", 94720, "Mendoza",
+                        "FATHER"), null, null));
+
+        addressData = new HashMap<>();
+        addressData.put(15011213, new AddressData("Las Doncellas", 27, "Los Fresnos",
+                "Nogales", "Nogales", "Veracruz", 94720));
+
+        reportCard = new HashMap<>();
+        reportCard.put(15011213, new ReportCard("Perez Garcia Julio Adan", "enero - junio",
+                "Ingenieria en Sistemas", 70, 90,
+                new Subject[]{new Subject("8g2", "Administracion de Redes", 5, 90),
+                        new Subject("8g7", "Administracion de servidores de Internet", 4, 90),
+                        new Subject("8g6", "Inteligencia Artificial", 4, 90),
+                        new Subject("8g4", "Gestion de Desarrollo de Software", 5, 90),
+                        new Subject("8g8", "Desarrollo para la web movil", 5, 90),
+                        new Subject("8g3", "Taller de Investigacion II", 5, 90)}));
+
+        scheduleData = new HashMap<>();
+        scheduleData.put(15011213, new ScheduleData("Perez Garcia Julio Adan", "22/may/2018",
+                "Ingenieria en Sistemas", "29", new ScheduleSubject[]{
+                new ScheduleSubject("Automatas", "8 - 9",
+                        new ScheduleRoom("18", "18", "18", "L7", "L7")),
+                new ScheduleSubject("Ing. Software", "10 - 11",
+                        new ScheduleRoom("LC02", "LC02", "LC02", "LC02", "LC02")),
+                new ScheduleSubject("Metodologias Web", "11 - 12",
+                        new ScheduleRoom("10", "10", "10", "L7", "L7")),
+                new ScheduleSubject("Administracion DB", "12 - 13",
+                        new ScheduleRoom("L1", "L1", "21", "21", "21")),
+                new ScheduleSubject("Lenguaje de Interfaz", "13 - 14",
+                        new ScheduleRoom("06", "L10", "06", "L7", "")),
+                new ScheduleSubject("Redes de Comp.", "16 - 17",
+                        new ScheduleRoom("06", "06", "06", "06", "06"))}));
     }
 
     public SubjectsInSemester[] getSubjectsInSemester(Integer controlNumber) {
@@ -166,5 +204,25 @@ public class StudentDAO {
 
     public StudentData getStudentData(Integer controlNumber) {
         return studentData.get(controlNumber);
+    }
+
+    public void setStudentData(Integer control, StudentData studentData) {
+        StudentDAO.studentData.put(control, studentData);
+    }
+
+    public AddressData getAddressData(Integer controlNumber) {
+        return addressData.get(controlNumber);
+    }
+
+    public void setAddressData(Integer controlNumber, AddressData addressData) {
+        StudentDAO.addressData.put(controlNumber, addressData);
+    }
+
+    public ReportCard getReportCard(Integer controlNumber) {
+        return reportCard.get(controlNumber);
+    }
+
+    public ScheduleData getScheduleData(Integer controlNumber) {
+        return scheduleData.get(controlNumber);
     }
 }

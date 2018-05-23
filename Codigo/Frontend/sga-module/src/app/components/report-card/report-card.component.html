@@ -1,7 +1,7 @@
 <!--Clase: Container
 	Descripción: Contenedor de la vista boleta-->
 
-<div class="container-report-card">
+<div class="container-report-card" *ngIf="reportCardData">
 
   <!--Titulo dentro de la pagina-->
   <!--<h2>BOLETA</h2>-->
@@ -12,14 +12,14 @@
     <!--Etiqueta UL : Ayudara a ordenar los datos mostrados en la vista
         Directiva ngFor : Ciclo de tipo forEach para iterar el objeto JSON con los datos del alumno
         variable item : Servira como apuntador para ir iterando el objeto-->
-    <ul *ngFor="let item of student" class="data">
+    <ul class="data">
       <!--Etiqueta LI : Ayudara a desplegar en un item de la lista la informacion
           Interpolacion : Mostrara los datos iterados del objeto-->
-      <li class="date">Fecha: {{item.date}}</li>
-      <li>Nombre: {{item.name}}</li>
-      <li>Carrera: {{item.career}}</li>
-      <li>Creditos cursados: {{item.progress}}</li>
-      <li class="average">Promedio del semestre: {{item.qualification}}</li>
+      <li class="date">Fecha: {{reportCardData.date}}</li>
+      <li>Nombre: {{reportCardData.name}}</li>
+      <li>Carrera: {{reportCardData.career}}</li>
+      <li>Creditos cursados: {{reportCardData.progress}}</li>
+      <li class="average">Promedio del semestre: {{reportCardData.qualification}}</li>
     </ul>
   </div>
 
@@ -33,7 +33,7 @@
   <!--Etiqueta utilizas para la tabla pertenecen al modulo importado MatTableModule
       de AngularMaterial-->
 
-  <mat-table class="lesson-table mat-elevation-z8" [dataSource]="dataSource">
+  <mat-table class="lesson-table mat-elevation-z8" [dataSource]="reportCardData?.subjects">
 
     <!--Subcontenedor que almacena titulo de la columna y datos
         directiva matColumnDef : Asigna un nombre al contenedor-->
@@ -45,17 +45,17 @@
           directiva matCellDef : ayuda a declarar la variable que servira como apuntador
           para iterar el dataSource
           Interpolacion : Coloca la informacion iterada en eldataSource-->
-      <mat-cell *matCellDef="let lesson">{{lesson.id}}</mat-cell>
+      <mat-cell *matCellDef="let lesson">{{lesson.code}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="subject">
       <mat-header-cell *matHeaderCellDef>MATERIA</mat-header-cell>
-      <mat-cell *matCellDef="let lesson">{{lesson.subject}}</mat-cell>
+      <mat-cell *matCellDef="let lesson">{{lesson.name}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="score">
       <mat-header-cell *matHeaderCellDef>CALIFICACION</mat-header-cell>
-      <mat-cell *matCellDef="let lesson">{{lesson.score}}</mat-cell>
+      <mat-cell *matCellDef="let lesson">{{lesson.qualification}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="credits">
@@ -80,4 +80,10 @@
     <button mat-raised-button color="primary" (click)="onPrintReportCard()">Imprimir</button>
   </div>
 
+</div>
+
+<div class="mt-2" *ngIf="!reportCardData">
+  <div class="loader spin m-auto">
+    <div class="text-center mt-4 reverse-spin">Loading</div>
+  </div>
 </div>

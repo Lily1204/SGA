@@ -1,6 +1,6 @@
 <!--https://gist.github.com/donnierayjones/6fd9802d992b2d8d6cfd-->
 
-<div id="Container" class="Container-Schedule">
+<div id="Container" class="Container-Schedule" *ngIf="scheduleData">
 
   <!--Titulo de la vista-->
   <!--<h1 class="title">MI HORARIO</h1>-->
@@ -11,13 +11,13 @@
     <!--Etiqueta UL (Lista Ordenada) : Ayudara a ordenar los datos a mostrar en el navegador
         Directiva ngFor : utilizada para crear un ciclo de tipo ForEach de typescript
         variable data : utilizada como apuntador para ir iterando la variable de objeto JSON dataStudent enviado desde el component.ts  -->
-    <ul *ngFor="let data of dataStudent">
+    <ul>
       <!--Etiquetas IL (Item de la lista) : Ayuda a mostrar un dato en concreto dentro de la lista
           Uso de interpolacion {{ }} : Mostrar los datos iterados que estan guardados en el dataSource de component.ts-->
-      <li>Fecha: {{data.date}}</li>
-      <li>Nombre del alumno: {{data.name}}</li>
-      <li>Carrera: {{data.career}}</li>
-      <li>Creditos a cursar: {{data.credits}}</li>
+      <li>Fecha: {{scheduleData.date}}</li>
+      <li>Nombre del alumno: {{scheduleData.name}}</li>
+      <li>Carrera: {{scheduleData.career}}</li>
+      <li>Creditos a cursar: {{scheduleData.credits}}</li>
     </ul>
   </div>
 
@@ -28,7 +28,6 @@
       Dentro contiene subelementos como son otras tablas.
   -->
 
-  ´
   <table id="schedule" class="table table-striped">
     <!--Encabezado de la tabla en donde muestra los dias de la semana-->
     <thead class="thead-dark">
@@ -59,7 +58,7 @@
               variable sub : Apuntador para iterar el array de objetos
               mySchedule : array de objetos (informacion)
               Interpolacion {{}} : Mostrar los datos provenientes de component.ts -->
-          <tr class="subjects" *ngFor="let sub of mySchedule">{{sub.subject}}</tr>
+          <tr class="subjects" *ngFor="let sub of scheduleData.subjects">{{sub.subject}}</tr>
           </tbody>
         </table>
       </th>
@@ -79,10 +78,10 @@
           <!--Crea una fila en la subtabla
               directiva ngFor: Recorrera la informacion deseada para esta posicion (Hora y salon(segun dia))
               variable sub : apuntador para iterar el array de objetos mySchedule-->
-          <tr *ngFor="let sub of mySchedule">
+          <tr *ngFor="let sub of scheduleData.subjects">
             <!--Elemento TD : Genera una columna con su dato correspondiente mediante la interpolacion-->
             <td>{{sub.hour}}</td>
-            <td>{{sub.salons.monday}}</td>
+            <td>{{sub.room.monday}}</td>
           </tr>
           </tbody>
         </table>
@@ -96,9 +95,9 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let sub of mySchedule">
+          <tr *ngFor="let sub of scheduleData.subjects">
             <td>{{sub.hour}}</td>
-            <td>{{sub.salons.tuesday}}</td>
+            <td>{{sub.room.tuesday}}</td>
           </tr>
           </tbody>
         </table>
@@ -112,9 +111,9 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let sub of mySchedule">
+          <tr *ngFor="let sub of scheduleData.subjects">
             <td>{{sub.hour}}</td>
-            <td>{{sub.salons.wednesday}}</td>
+            <td>{{sub.room.wednesday}}</td>
           </tr>
           </tbody>
         </table>
@@ -128,9 +127,9 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let sub of mySchedule">
+          <tr *ngFor="let sub of scheduleData.subjects">
             <td>{{sub.hour}}</td>
-            <td>{{sub.salons.thursday}}</td>
+            <td>{{sub.room.thursday}}</td>
           </tr>
           </tbody>
         </table>
@@ -144,9 +143,9 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let sub of mySchedule">
+          <tr *ngFor="let sub of scheduleData.subjects">
             <td>{{sub.hour}}</td>
-            <td>{{sub.salons.friday}}</td>
+            <td>{{sub.room.friday}}</td>
           </tr>
           </tbody>
         </table>
@@ -158,5 +157,11 @@
   <!--Etiqueta BUTTON : Crea un boton con la funcionalidad de imprimir-->
   <div class="fa-pull-right d-print-none">
     <button type="button" class="btn btn-primary btn-sm" (click)="onPrintSchedule()">Imprimir</button>
+  </div>
+</div>
+
+<div class="mt-2" *ngIf="!scheduleData">
+  <div class="loader spin m-auto">
+    <div class="text-center mt-4 reverse-spin">Loading</div>
   </div>
 </div>

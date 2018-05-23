@@ -18,6 +18,7 @@ import {UserService} from '../../services/user.service';
  * */
 import {Subscription} from 'rxjs/Subscription';
 import {Observable} from 'rxjs/Observable';
+import {forkJoin} from 'rxjs/observable/forkJoin';
 /**
  * Manager de Toast para las notificaciones
  * */
@@ -33,10 +34,21 @@ import {AppState} from '../../models/app.state';
 import {KinshipEnum} from '../../models/kinship.enum';
 import {UserData} from '../../models/user-data.interface';
 
+/**
+ * Declaracion de componente tomando las anotaciones de angular
+ * selector = Indica el nombre que tomara la etiqueta del componente
+ * templateUrl = Indica la ubicacion de la template de html para el componente
+ * */
 @Component({
   selector: 'app-update-student-data',
   templateUrl: './update-student-data.component.html'
 })
+/**
+ * Clase UpdateStudentDataComponent que implementa
+ * la interfaz OnInit para escuchar el momento en
+ * que se crea el componente y la interfaz OnDestroy
+ * para escuchar el momento en que se destruye el componente
+ * */
 export class UpdateStudentDataComponent implements OnInit, OnDestroy {
 
   /**
@@ -55,7 +67,7 @@ export class UpdateStudentDataComponent implements OnInit, OnDestroy {
    * Variable para almacenar una referencia
    * al formulario de direccion
    * */
-  privateAddressForm: FormGroup;
+  addressForm: FormGroup;
   /**
    * Variable para almacenar una referencia
    * al formulario de tutores
@@ -118,7 +130,7 @@ export class UpdateStudentDataComponent implements OnInit, OnDestroy {
      * Inicializacion del formulario de
      * direccion
      * */
-    this.privateAddressForm = formBuilder.group({
+    this.addressForm = formBuilder.group({
       street: ['', Validators.required],
       number: ['', Validators.required],
       colony: ['', Validators.required],
@@ -219,12 +231,31 @@ export class UpdateStudentDataComponent implements OnInit, OnDestroy {
            * Llamada al servicio "subjectsInSemester" el cual
            * pide el cardex del alumno
            * */
-          this.studentService.studentData(user.id).subscribe(studentData =>
+          this.studentService.studentData(user.id).subscribe(studentData => {
+            this.enableTutorsForm.controls.father.patchValue(!!studentData.father);
+            this.enableTutorsForm.controls.mother.patchValue(!!studentData.mother);
+            this.enableTutorsForm.controls.tutor.patchValue(!!studentData.tutor);
             /**
              * Se llena el formulario con los datos existente
              * en el servidor
              * */
-            this.generalDataForm.patchValue(studentData)));
+            this.generalDataForm.patchValue(studentData);
+          }));
+        /**
+         * Se añade una subscripcion
+         * */
+        this.subscriptions.add(
+          /**
+           * Llamada al servicio "subjectsInSemester" el cual
+           * pide el cardex del alumno
+           * */
+          this.studentService.addressData(user.id).subscribe(addressData => {
+            /**
+             * Se llena el formulario con los datos existente
+             * en el servidor
+             * */
+            this.addressForm.patchValue(addressData);
+          }));
       }));
   }
 
@@ -246,11 +277,52 @@ export class UpdateStudentDataComponent implements OnInit, OnDestroy {
    * datos
    * */
   onUpdateStudentData(): void {
+    /**
+     * Cambia el valor de la variable
+     * para indicar que la carga academica
+     * se esta enviando
+     * */
     this.isUpdatingStudentData = true;
-    setTimeout(() => {
-      this.toastManager.success('Datos de alumnos actualizados con exito');
-      this.isUpdatingStudentData = false;
-    }, 1000);
+    /**
+     * Se añade una subscripcion
+     * */
+    this.subscriptions.add(
+      /**
+       * Metodo 'forkJoin' de la libreria de
+       * rxjs, permite unir varios observables
+       * en uno solo, este no continuara hasta
+       * que todos lo hagan
+       * */
+      forkJoin(
+        /**
+         * Llamada al servicio "updateStudentData" el cual
+         * envia las materias seleccionadas por el alumno
+         * */
+        this.studentService.updateStudentData(this.user.id, this.generalDataForm.getRawValue()),
+        /**
+         * Llamada al servicio "updateAddressData" el cual
+         * envia las materias seleccionadas por el alumno
+         * */
+        this.studentService.updateAddressData(this.user.id, this.addressForm.getRawValue()))
+      /**
+       * Cuando el servicio recibe la respuesta del
+       * servidor cambia el valor de la variable para
+       * indicar al usuario que termino de cargar
+       * */
+        .finally(() => this.isUpdatingStudentData = false)
+        .subscribe(() =>
+            /**
+             * Si el servicio completa la
+             * operacion con exito se ejecutara
+             * el codigo en este bloque
+             * */
+            this.toastManager.success('Datos de Alumno enviados con Exito'),
+          () =>
+            /**
+             * De lo contrario, se ejecuta
+             * este bloque de codigo
+             * */
+            this.toastManager.error('Sucedio algun error al enviar los datos')));
   }
 
   /**

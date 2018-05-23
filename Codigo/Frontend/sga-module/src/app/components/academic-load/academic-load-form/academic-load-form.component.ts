@@ -21,8 +21,15 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
  * */
 export class AcademicLoadFormComponent {
 
+  /**
+   * Declaracion de un valor de entrada
+   * del componente
+   * */
   @Input() subjectsInSemester: any;
 
+  /**
+   * Declaracion de un evento del componente
+   * */
   @Output() valueChanges: EventEmitter<any>;
 
   value: any[];

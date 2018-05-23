@@ -1,4 +1,4 @@
-export interface PrivateAddressData {
+export interface AddressData {
   street: string;
   number: number;
   colony: string;

@@ -35,6 +35,7 @@ import {UserData} from '../../models/user-data.interface';
  * Icono de "Spinner" e interfaz de font awesome
  * */
 import {faSpinner, faExclamationTriangle} from '@fortawesome/fontawesome-free-solid';
+import {IconDefinition} from '@fortawesome/fontawesome';
 
 /**
  * Declaracion de componente tomando las anotaciones de angular
@@ -72,7 +73,7 @@ export class LoginComponent implements OnDestroy {
   /**
    * Referencia al icono "spinner" de font awesome
    * */
-  loadIcon = faSpinner;
+  loadIcon: IconDefinition = faSpinner;
   /**
    * Referencia al icono "ExclamationTriangle" de font awesome
    * */

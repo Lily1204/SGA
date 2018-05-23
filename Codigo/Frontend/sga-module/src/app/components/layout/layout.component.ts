@@ -16,8 +16,8 @@ import {faEdit} from '@fortawesome/fontawesome-free-regular';
 /**
  * Libreria de rxjs que añade soporte para programación funcional
  * */
-import {filter} from 'rxjs/operator/filter';
-import {Subscription} from 'rxjs/Subscription';
+import {Subscription} from 'rxjs/internal/Subscription';
+import {filter} from 'rxjs/operators';
 /**
  * Librerias de Ng R X Store
  * */

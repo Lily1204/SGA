@@ -13,7 +13,7 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '
 /**
  * Librerias de rxjs que añade soporte para programación funcional
  * */
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs/internal/Observable';
 
 /**
  * Librerias de Ng R X Store

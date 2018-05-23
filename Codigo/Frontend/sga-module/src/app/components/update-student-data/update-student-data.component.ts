@@ -16,9 +16,9 @@ import {UserService} from '../../services/user.service';
 /**
  * Librerias de rxjs que añade soporte para programación funcional
  * */
-import {Subscription} from 'rxjs/Subscription';
-import {Observable} from 'rxjs/Observable';
-import {forkJoin} from 'rxjs/observable/forkJoin';
+import {Subscription} from 'rxjs/internal/Subscription';
+import {Observable} from 'rxjs/internal/Observable';
+import {forkJoin} from 'rxjs/internal/observable/forkJoin';
 /**
  * Manager de Toast para las notificaciones
  * */

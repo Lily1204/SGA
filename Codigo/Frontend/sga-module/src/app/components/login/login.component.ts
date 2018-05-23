@@ -16,8 +16,7 @@ import {UserService} from '../../services/user.service';
 /**
  * Librerias de rxjs que añade soporte para programación funcional
  * */
-import {Subscription} from 'rxjs/Subscription';
-import 'rxjs/add/operator/finally';
+import {Subscription} from 'rxjs/internal/Subscription';
 /**
  * Librerias de Ng R X Store
  * */

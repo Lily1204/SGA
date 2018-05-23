@@ -13,8 +13,8 @@ import {UserService} from '../../services/user.service';
 /**
  * Librerias de rxjs que añade soporte para programación funcional
  * */
-import {Subscription} from 'rxjs/Subscription';
-import {Observable} from 'rxjs/Observable';
+import {Subscription} from 'rxjs/internal/Subscription';
+import {Observable} from 'rxjs/internal/Observable';
 /**
  * Manager de Toast para las notificaciones
  * */

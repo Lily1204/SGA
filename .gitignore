@@ -1,0 +1,4 @@
+.vpp.*
+*.bak_000f
+*.vbak
+Codigo/Frontend/sga-module/node_modules/
